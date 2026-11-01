@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 
-app.use('/', roomTypesRouter);
+app.use('/room-types', roomTypesRouter);
 
 // Catch-all (Custom 404)
 app.use((req, res) => {
