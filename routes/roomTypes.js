@@ -4,7 +4,7 @@ const roomTypesRouter = Router();
 const getRoomTypes = require('../controllers/getRoomTypes');
 const getRoomTypesCreate = require('../controllers/getRoomTypesCreate');
 const postRoomTypesCreate = require('../controllers/postRoomTypesCreate');
-const getRoomType = require('../controllers/getRoomType');
+const getRoomTypeByName = require('../controllers/getRoomTypeByName');
 const getRoomTypeUpdate = require('../controllers/getRoomTypeUpdate');
 const postRoomTypeUpdate = require('../controllers/postRoomTypeUpdate');
 const postRoomTypeDelete = require('../controllers/postRoomTypeDelete');
@@ -19,7 +19,7 @@ roomTypesRouter.get('/create', getRoomTypesCreate);
 roomTypesRouter.post('/create', postRoomTypesCreate);
 
 // GET /room-types/:name
-roomTypesRouter.get('/:name', getRoomType);
+roomTypesRouter.get('/:name', getRoomTypeByName);
 
 // GET /room-types/:name/update
 roomTypesRouter.get('/:name/update', getRoomTypeUpdate);
