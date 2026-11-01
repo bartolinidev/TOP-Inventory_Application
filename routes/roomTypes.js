@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const roomTypesRouter = Router();
 
-const getAllRoomTypes = require('../controllers/getRoomTypes');
+const getRoomTypes = require('../controllers/getRoomTypes');
 const getRoomTypesCreate = require('../controllers/getRoomTypesCreate');
 const postRoomTypesCreate = require('../controllers/postRoomTypesCreate');
 const getRoomType = require('../controllers/getRoomType');
@@ -10,7 +10,7 @@ const postRoomTypeUpdate = require('../controllers/postRoomTypeUpdate');
 const postRoomTypeDelete = require('../controllers/postRoomTypeDelete');
 
 // GET /room-types
-roomTypesRouter.get('/', getAllRoomTypes);
+roomTypesRouter.get('/', getRoomTypes);
 
 // GET /room-types/create
 roomTypesRouter.get('/create', getRoomTypesCreate);
