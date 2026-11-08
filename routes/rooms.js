@@ -2,6 +2,7 @@ const { Router } = require('express');
 const roomsRouter = Router();
 
 const getRooms = require('../controllers/rooms/getRooms');
+const getRoomsByFloor = require('../controllers/rooms/getRoomsByFloor');
 const getRoomsCreate = require('../controllers/rooms/getRoomsCreate');
 const postRoomsCreate = require('../controllers/rooms/postRoomsCreate');
 const getRoomById = require('../controllers/rooms/getRoomById');
@@ -18,16 +19,19 @@ roomsRouter.get('/create', getRoomsCreate);
 // POST /rooms/create
 roomsRouter.post('/create', postRoomsCreate);
 
-// GET /rooms/:id
-roomsRouter.get('/:id', getRoomById);
+// GET /rooms/floor/:floor
+roomsRouter.get('/floor/:floor', getRoomsByFloor);
 
-// GET /rooms/:id/update
-roomsRouter.get('/:id/update', getRoomUpdate);
+// GET /rooms/id/:id
+roomsRouter.get('/id/:id', getRoomById);
 
-// POST /rooms/:id/update
-roomsRouter.post('/:id/update', postRoomUpdate);
+// GET /rooms/id/:id/update
+roomsRouter.get('/id/:id/update', getRoomUpdate);
 
-// POST /rooms/:id/delete
-roomsRouter.post('/:id/delete', postRoomDelete);
+// POST /rooms/id/:id/update
+roomsRouter.post('/id/:id/update', postRoomUpdate);
+
+// POST /rooms/id/:id/delete
+roomsRouter.post('/id/:id/delete', postRoomDelete);
 
 module.exports = roomsRouter;
