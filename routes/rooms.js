@@ -23,8 +23,8 @@ roomsRouter.post('/create', postRoomsCreate);
 // GET /rooms/floor/:floor
 roomsRouter.get('/floor/:floor', getRoomsByFloor);
 
-// GET /rooms/bed-type/:bed-type
-roomsRouter.get('/floor/:floor', getRoomsByBedType);
+// GET /rooms/bed-type/:bed_type
+roomsRouter.get('/floor/:bed_type', getRoomsByBedType);
 
 // GET /rooms/id/:id
 roomsRouter.get('/id/:id', getRoomById);
