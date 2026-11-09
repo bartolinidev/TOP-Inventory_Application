@@ -2,9 +2,10 @@ const { Router } = require('express');
 const roomsRouter = Router();
 
 const getRooms = require('../controllers/rooms/getRooms');
-const getRoomsByFloor = require('../controllers/rooms/getRoomsByFloor');
 const getRoomsCreate = require('../controllers/rooms/getRoomsCreate');
 const postRoomsCreate = require('../controllers/rooms/postRoomsCreate');
+const getRoomsByFloor = require('../controllers/rooms/getRoomsByFloor');
+const getRoomsByBedType = require('../controllers/rooms/getRoomsByBedType');
 const getRoomById = require('../controllers/rooms/getRoomById');
 const getRoomUpdate = require('../controllers/rooms/getRoomUpdate');
 const postRoomUpdate = require('../controllers/rooms/postRoomUpdate');
@@ -21,6 +22,9 @@ roomsRouter.post('/create', postRoomsCreate);
 
 // GET /rooms/floor/:floor
 roomsRouter.get('/floor/:floor', getRoomsByFloor);
+
+// GET /rooms/bed-type/:bed-type
+roomsRouter.get('/floor/:floor', getRoomsByBedType);
 
 // GET /rooms/id/:id
 roomsRouter.get('/id/:id', getRoomById);
