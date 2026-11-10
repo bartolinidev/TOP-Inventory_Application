@@ -1,6 +1,6 @@
 const pool = require('./pool');
 
-async function getRooms() {
+const getRooms = async () => {
   const { rows } = await pool.query(`
     SELECT 
       rooms.id, 
@@ -16,15 +16,15 @@ async function getRooms() {
     ORDER BY rooms.id ASC;
   `);
   return rows;
-}
+};
 
-async function createRoom({
+const createRoom = async ({
   id,
   room_type_id,
   floor,
   bed_type,
   accessible = false,
-}) {
+}) => {
   await pool.query(
     `INSERT INTO rooms
       (
@@ -37,9 +37,9 @@ async function createRoom({
     VALUES ($1, $2, $3, $4, $5)`,
     [id, room_type_id, floor, bed_type, accessible],
   );
-}
+};
 
-async function getRoomsByFloor({ floor }) {
+const getRoomsByFloor = async ({ floor }) => {
   const { rows } = await pool.query(
     `
     SELECT 
@@ -59,9 +59,9 @@ async function getRoomsByFloor({ floor }) {
     [floor],
   );
   return rows;
-}
+};
 
-async function getRoomsByBedType({ bed_type }) {
+const getRoomsByBedType = async ({ bed_type }) => {
   const { rows } = await pool.query(
     `
     SELECT 
@@ -81,9 +81,9 @@ async function getRoomsByBedType({ bed_type }) {
     [bed_type],
   );
   return rows;
-}
+};
 
-async function getRoomById({ id }) {
+const getRoomById = async ({ id }) => {
   const { rows } = await pool.query(
     `
     SELECT 
@@ -103,23 +103,23 @@ async function getRoomById({ id }) {
     [id],
   );
   return rows[0];
-}
+};
 
-async function updateRoom(
+const updateRoom = async (
   originalId,
   { id, room_type_id, floor, bed_type, accessible = false },
-) {
+) => {
   await pool.query(
     `UPDATE rooms
       SET id = $1, room_type_id = $2, floor = $3, bed_type = $4, accessible = $5
       WHERE id = $6`,
     [id, room_type_id, floor, bed_type, accessible, originalId],
   );
-}
+};
 
-async function deleteRoom(id) {
+const deleteRoom = async (id) => {
   await pool.query(`DELETE FROM rooms WHERE id = $1`, [id]);
-}
+};
 
 module.exports = {
   getRooms,
