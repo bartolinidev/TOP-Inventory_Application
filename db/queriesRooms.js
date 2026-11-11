@@ -61,6 +61,28 @@ const getRoomsByFloor = async ({ floor }) => {
   return rows;
 };
 
+const getRoomsByStandard = async ({ standard }) => {
+  const { rows } = await pool.query(
+    `
+    SELECT 
+      rooms.id, 
+      rooms.floor, 
+      rooms.bed_type, 
+      rooms.accessible,
+      room_standards.name AS room_standard_name,
+      room_standards.coffee_machine,
+      room_standards.bathtub,
+      room_standards.price
+    FROM rooms
+    JOIN room_standards ON rooms.room_standard_id = room_standards.id
+    WHERE room_standards.name = $1
+    ORDER BY rooms.id ASC;
+    `,
+    [standard],
+  );
+  return rows;
+};
+
 const getRoomsByBedType = async ({ bed_type }) => {
   const { rows } = await pool.query(
     `
@@ -125,6 +147,7 @@ module.exports = {
   getRooms,
   createRoom,
   getRoomsByFloor,
+  getRoomsByStandard,
   getRoomsByBedType,
   getRoomById,
   updateRoom,
