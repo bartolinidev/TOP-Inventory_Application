@@ -1,6 +1,6 @@
 const pool = require('./pool');
 
-const getRoomStandards = async () => {
+const getAllRoomStandards = async () => {
   const { rows } = await pool.query(`
     SELECT * FROM room_standards
   `);
@@ -37,7 +37,7 @@ const deleteRoomStandard = async (name) => {
 };
 
 module.exports = {
-  getRoomStandards,
+  getAllRoomStandards,
   createRoomStandard,
   updateRoomStandard,
   deleteRoomStandard,
