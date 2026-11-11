@@ -7,13 +7,13 @@ const getAllRoomStandards = async () => {
   return rows;
 };
 
-const getRoomStandard = async ({ standard }) => {
+const getRoomStandard = async (name) => {
   const { rows } = await pool.query(
     `
     SELECT * FROM room_standards
     WHERE name = $1
   `,
-    [standard],
+    [name],
   );
   return rows[0];
 };
