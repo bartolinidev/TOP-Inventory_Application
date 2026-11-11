@@ -3,7 +3,7 @@ const roomStandardsRouter = Router();
 
 const getAllRoomStandards = require('../controllers/roomStandards/getAllRoomStandards');
 const getRoomStandardsCreate = require('../controllers/roomStandards/getRoomStandardsCreate');
-const postRoomStandardsCreate = require('../controllers/roomStandards/postRoomStandardsCreate');
+const postRoomStandardsCreate = require('../controllers/roomStandards/postRoomStandardCreate');
 const getRoomStandardUpdate = require('../controllers/roomStandards/getRoomStandardUpdate');
 const postRoomStandardUpdate = require('../controllers/roomStandards/postRoomStandardUpdate');
 const postRoomStandardDelete = require('../controllers/roomStandards/postRoomStandardDelete');
