@@ -7,12 +7,12 @@ const getRooms = async () => {
       rooms.floor, 
       rooms.bed_type, 
       rooms.accessible,
-      room_types.name AS room_type_name,
-      room_types.coffee_machine,
-      room_types.bathtub,
-      room_types.price
+      room_standards.name AS room_standard_name,
+      room_standards.coffee_machine,
+      room_standards.bathtub,
+      room_standards.price
     FROM rooms
-    JOIN room_types ON rooms.room_type_id = room_types.id
+    JOIN room_standards ON rooms.room_standard_id = room_standards.id
     ORDER BY rooms.id ASC;
   `);
   return rows;
@@ -20,7 +20,7 @@ const getRooms = async () => {
 
 const createRoom = async ({
   id,
-  room_type_id,
+  room_standard_id,
   floor,
   bed_type,
   accessible = false,
@@ -29,13 +29,13 @@ const createRoom = async ({
     `INSERT INTO rooms
       (
       id,
-      room_type_id,
+      room_standard_id,
       floor,
       bed_type,
       accessible
       )
     VALUES ($1, $2, $3, $4, $5)`,
-    [id, room_type_id, floor, bed_type, accessible],
+    [id, room_standard_id, floor, bed_type, accessible],
   );
 };
 
@@ -47,12 +47,12 @@ const getRoomsByFloor = async ({ floor }) => {
       rooms.floor, 
       rooms.bed_type, 
       rooms.accessible,
-      room_types.name AS room_type_name,
-      room_types.coffee_machine,
-      room_types.bathtub,
-      room_types.price
+      room_standards.name AS room_standard_name,
+      room_standards.coffee_machine,
+      room_standards.bathtub,
+      room_standards.price
     FROM rooms
-    JOIN room_types ON rooms.room_type_id = room_types.id
+    JOIN room_standards ON rooms.room_standard_id = room_standards.id
     WHERE rooms.floor = $1
     ORDER BY rooms.id ASC;
     `,
@@ -69,12 +69,12 @@ const getRoomsByBedType = async ({ bed_type }) => {
       rooms.floor, 
       rooms.bed_type, 
       rooms.accessible,
-      room_types.name AS room_type_name,
-      room_types.coffee_machine,
-      room_types.bathtub,
-      room_types.price
+      room_standards.name AS room_standard_name,
+      room_standards.coffee_machine,
+      room_standards.bathtub,
+      room_standards.price
     FROM rooms
-    JOIN room_types ON rooms.room_type_id = room_types.id
+    JOIN room_standards ON rooms.room_standard_id = room_standards.id
     WHERE rooms.bed_type = $1
     ORDER BY rooms.id ASC;
     `,
@@ -91,12 +91,12 @@ const getRoomById = async ({ id }) => {
       rooms.floor, 
       rooms.bed_type, 
       rooms.accessible,
-      room_types.name AS room_type_name,
-      room_types.coffee_machine,
-      room_types.bathtub,
-      room_types.price
+      room_standards.name AS room_standard_name,
+      room_standards.coffee_machine,
+      room_standards.bathtub,
+      room_standards.price
     FROM rooms
-    JOIN room_types ON rooms.room_type_id = room_types.id
+    JOIN room_standards ON rooms.room_standard_id = room_standards.id
     WHERE rooms.id = $1
     ORDER BY rooms.id ASC;
     `,
@@ -107,13 +107,13 @@ const getRoomById = async ({ id }) => {
 
 const updateRoom = async (
   originalId,
-  { id, room_type_id, floor, bed_type, accessible = false },
+  { id, room_standard_id, floor, bed_type, accessible = false },
 ) => {
   await pool.query(
     `UPDATE rooms
-      SET id = $1, room_type_id = $2, floor = $3, bed_type = $4, accessible = $5
+      SET id = $1, room_standard_id = $2, floor = $3, bed_type = $4, accessible = $5
       WHERE id = $6`,
-    [id, room_type_id, floor, bed_type, accessible, originalId],
+    [id, room_standard_id, floor, bed_type, accessible, originalId],
   );
 };
 

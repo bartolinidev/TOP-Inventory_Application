@@ -1,11 +1,11 @@
-const db = require('../db/queries/queriesRoomTypes');
+const db = require('../db/queries/queriesRoomStandards');
 const { body, validationResult, matchedData } = require('express-validator');
 
 const validatePayload = [
   body('name')
     .trim()
     .isLength({ min: 1, max: 20 })
-    .withMessage(`Room type name length must be 1-20`),
+    .withMessage(`Room standard name length must be 1-20`),
   body('price')
     .trim()
     .isDecimal({
@@ -18,26 +18,26 @@ const validatePayload = [
   body('bathtub').optional().toBoolean(),
 ];
 
-const postRoomTypesCreate = [
+const postRoomStandardsCreate = [
   ...validatePayload,
   async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).render('createRoomType', {
-          title: 'Create Room Type',
+        return res.status(400).render('createRoomStandard', {
+          title: 'Create Room Standard',
           errors: errors.array(),
         });
       }
 
       const { name, coffee_machine, bathtub, price } = matchedData(req);
-      await db.createRoomType({ name, coffee_machine, bathtub, price });
+      await db.createRoomStandard({ name, coffee_machine, bathtub, price });
 
-      res.redirect('/room-types');
+      res.redirect('/room-standards');
     } catch (err) {
       next(err);
     }
   },
 ];
 
-module.exports = postRoomTypesCreate;
+module.exports = postRoomStandardsCreate;

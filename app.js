@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('node:path');
-const roomTypesRouter = require('./routes/roomTypes');
+const roomStandardsRouter = require('./routes/roomStandards');
 const roomsRouter = require('./routes/rooms');
 
 // Static paths
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 
-app.use('/room-types', roomTypesRouter);
+app.use('/room-standards', roomStandardsRouter);
 app.use('/rooms', roomsRouter);
 
 // Catch-all (Custom 404)
