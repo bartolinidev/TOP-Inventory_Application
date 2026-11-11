@@ -7,6 +7,17 @@ const getAllRoomStandards = async () => {
   return rows;
 };
 
+const getRoomStandard = async ({ standard }) => {
+  const { rows } = await pool.query(
+    `
+    SELECT * FROM room_standards
+    WHERE name = $1
+  `,
+    [standard],
+  );
+  return rows[0];
+};
+
 const createRoomStandard = async ({
   name,
   coffee_machine = false,
@@ -38,6 +49,7 @@ const deleteRoomStandard = async (name) => {
 
 module.exports = {
   getAllRoomStandards,
+  getRoomStandard,
   createRoomStandard,
   updateRoomStandard,
   deleteRoomStandard,
