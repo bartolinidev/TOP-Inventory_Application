@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const roomsRouter = Router();
 
-const getRooms = require('../controllers/rooms/getRooms');
+const getAllRooms = require('../controllers/rooms/getAllRooms');
 const getRoomsCreate = require('../controllers/rooms/getRoomsCreate');
 const postRoomsCreate = require('../controllers/rooms/postRoomsCreate');
 const getRoomsByFloor = require('../controllers/rooms/getRoomsByFloor');
@@ -12,7 +12,7 @@ const postRoomUpdate = require('../controllers/rooms/postRoomUpdate');
 const postRoomDelete = require('../controllers/rooms/postRoomDelete');
 
 // GET /rooms
-roomsRouter.get('/', getRooms);
+roomsRouter.get('/', getAllRooms);
 
 // GET /rooms/create
 roomsRouter.get('/create', getRoomsCreate);

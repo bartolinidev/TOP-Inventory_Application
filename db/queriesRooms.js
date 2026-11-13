@@ -1,6 +1,6 @@
 const pool = require('./pool');
 
-const getRooms = async () => {
+const getAllRooms = async () => {
   const { rows } = await pool.query(`
     SELECT 
       rooms.id, 
@@ -177,7 +177,7 @@ const countRoomsByFloor = async ({ floor }) => {
 };
 
 module.exports = {
-  getRooms,
+  getAllRooms,
   createRoom,
   getRoomsByFloor,
   getRoomsByStandard,
