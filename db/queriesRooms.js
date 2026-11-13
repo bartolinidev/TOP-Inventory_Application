@@ -148,6 +148,16 @@ const countAllRooms = async () => {
   return Number(result.rows[0].count);
 };
 
+const countRoomsInStandard = async ({ standard }) => {
+  const result = await pool.query(
+    `SELECT COUNT(*) FROM rooms
+         JOIN room_standards ON rooms.room_standard_id = room_standards.id
+         WHERE room_standards.name = $1`,
+    [standard],
+  );
+  return Number(result.rows[0].count);
+};
+
 module.exports = {
   getRooms,
   createRoom,
@@ -158,4 +168,5 @@ module.exports = {
   updateRoom,
   deleteRoom,
   countAllRooms,
+  countRoomsInStandard,
 };
