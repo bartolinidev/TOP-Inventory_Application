@@ -167,6 +167,15 @@ const countRoomsByBedType = async ({ bed_type }) => {
   return Number(result.rows[0].count);
 };
 
+const countRoomsByFloor = async ({ floor }) => {
+  const result = await pool.query(
+    `SELECT COUNT(*) FROM rooms
+         WHERE floor = $1`,
+    [floor],
+  );
+  return Number(result.rows[0].count);
+};
+
 module.exports = {
   getRooms,
   createRoom,
@@ -179,4 +188,5 @@ module.exports = {
   countAllRooms,
   countRoomsInStandard,
   countRoomsByBedType,
+  countRoomsByFloor,
 };
