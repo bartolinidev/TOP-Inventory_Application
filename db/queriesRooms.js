@@ -143,6 +143,11 @@ const deleteRoom = async (id) => {
   await pool.query(`DELETE FROM rooms WHERE id = $1`, [id]);
 };
 
+const countAllRooms = async () => {
+  const result = await pool.query(`SELECT COUNT(*) FROM rooms`);
+  return Number(result.rows[0].count);
+};
+
 module.exports = {
   getRooms,
   createRoom,
@@ -152,4 +157,5 @@ module.exports = {
   getRoomById,
   updateRoom,
   deleteRoom,
+  countAllRooms,
 };
