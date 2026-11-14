@@ -144,36 +144,36 @@ const deleteRoom = async (id) => {
 };
 
 const countAllRooms = async () => {
-  const result = await pool.query(`SELECT COUNT(*) FROM rooms`);
-  return Number(result.rows[0].count);
+  const { rows } = await pool.query(`SELECT COUNT(*) FROM rooms`);
+  return Number(rows[0].count);
 };
 
 const countRoomsInStandard = async ({ standard }) => {
-  const result = await pool.query(
+  const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
          JOIN room_standards ON rooms.room_standard_id = room_standards.id
          WHERE room_standards.name = $1`,
     [standard],
   );
-  return Number(result.rows[0].count);
+  return Number(rows[0].count);
 };
 
 const countRoomsByBedType = async ({ bed_type }) => {
-  const result = await pool.query(
+  const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
          WHERE bed_type = $1`,
     [bed_type],
   );
-  return Number(result.rows[0].count);
+  return Number(rows[0].count);
 };
 
 const countRoomsByFloor = async ({ floor }) => {
-  const result = await pool.query(
+  const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
          WHERE floor = $1`,
     [floor],
   );
-  return Number(result.rows[0].count);
+  return Number(rows[0].count);
 };
 
 module.exports = {
