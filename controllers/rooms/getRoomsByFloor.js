@@ -15,4 +15,4 @@ const getRoomsByFloor = async (req, res, next) => {
   }
 };
 
-module.exports = getAllRooms;
+module.exports = getRoomsByFloor;
