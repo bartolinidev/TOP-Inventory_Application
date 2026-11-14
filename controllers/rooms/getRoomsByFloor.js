@@ -1,6 +1,6 @@
 const db = require('../db/queries/queriesRooms');
 
-const getAllRooms = async (req, res, next) => {
+const getRoomsByFloor = async (req, res, next) => {
   try {
     const { floor } = req.params;
 
