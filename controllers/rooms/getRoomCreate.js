@@ -1,4 +1,4 @@
-const getRoomCreate = (req, res, next) => {
+const getRoomCreate = (req, res) => {
   res.render('createRoom', {
     title: 'Create Room',
   });

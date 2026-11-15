@@ -1,4 +1,4 @@
-const getRoomStandardsCreate = (req, res, next) => {
+const getRoomStandardsCreate = (req, res) => {
   res.render('createRoomStandard', {
     title: 'Create Room Standard',
   });
