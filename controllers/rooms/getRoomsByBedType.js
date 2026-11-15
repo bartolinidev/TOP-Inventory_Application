@@ -1,4 +1,4 @@
-const db = require('../db/queries/queriesRooms');
+const db = require('../../db/queries/queriesRooms');
 
 const getRoomsByBedType = async (req, res, next) => {
   try {

@@ -1,4 +1,4 @@
-const db = require('../db/queries/queriesRoomStandards');
+const db = require('../../db/queries/queriesRoomStandards');
 
 const postRoomStandardDelete = async (req, res, next) => {
   const { name } = req.params;
