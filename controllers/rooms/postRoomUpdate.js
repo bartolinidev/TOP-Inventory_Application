@@ -1,34 +1,36 @@
-const db = require('../db/queries/queriesRoom');
+const db = require('../db/queries/queriesRooms');
 const { validationResult, matchedData } = require('express-validator');
 const validateRoom = require('../../utils/validateRoom');
 
-const postRoomStandardsUpdate = [
-  ...validateRoomStandard,
+const postRoomUpdate = [
+  ...validateRoom,
   async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).render('updateRoomStandard', {
-          title: 'Update Room Standard',
+        return res.status(400).render('updateRoom', {
+          title: 'Update Room',
           errors: errors.array(),
         });
       }
 
-      const originalName = req.params.name;
+      const originalId = req.params.id;
 
-      const { name, coffee_machine, bathtub, price } = matchedData(req);
-      await db.updateRoomStandard(originalName, {
-        name,
-        coffee_machine,
-        bathtub,
-        price,
+      const { id, room_standard_id, floor, bed_type, accessible } =
+        matchedData(req);
+      await db.updateRoom(originalId, {
+        id,
+        room_standard_id,
+        floor,
+        bed_type,
+        accessible,
       });
 
-      res.redirect('/room-standards');
+      res.redirect('/rooms');
     } catch (err) {
       next(err);
     }
   },
 ];
 
-module.exports = postRoomStandardsUpdate;
+module.exports = postRoomUpdate;
