@@ -1,6 +1,6 @@
 const db = require('../db/queries/queriesRoomStandards');
 
-const postRoomStandardsDelete = async (req, res, next) => {
+const postRoomStandardDelete = async (req, res, next) => {
   const { name } = req.params;
 
   try {
@@ -26,4 +26,4 @@ const postRoomStandardsDelete = async (req, res, next) => {
   }
 };
 
-module.exports = postRoomStandardsDelete;
+module.exports = postRoomStandardDelete;
