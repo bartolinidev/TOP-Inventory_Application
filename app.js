@@ -3,6 +3,7 @@ const app = express();
 const path = require('node:path');
 const roomStandardsRouter = require('./routes/roomStandards');
 const roomsRouter = require('./routes/rooms');
+const indexRouter = require('./routes/index');
 
 // Static paths
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 
+app.use('/', indexRouter);
 app.use('/room-standards', roomStandardsRouter);
 app.use('/rooms', roomsRouter);
 
