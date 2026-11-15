@@ -4,7 +4,7 @@ const getAllRoomStandards = async (req, res, next) => {
   try {
     const standards = await db.getAllRoomStandards();
 
-    res.render('roomStandards', {
+    res.render('allRoomStandards', {
       title: 'Room Standards',
       standards,
     });
