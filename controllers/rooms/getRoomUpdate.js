@@ -1,0 +1,17 @@
+const db = require('../db/queries/queriesRooms');
+
+const getRoomUpdate = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const room = await db.getRoomById({ id });
+
+    res.render('updateRoom', {
+      title: 'Update Room',
+      room,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = getRoomUpdate;
