@@ -19,7 +19,7 @@ const postRoomStandardsDelete = async (req, res, next) => {
       });
     }
 
-    await db.deleteRoomStandard(name);
+    await db.deleteRoomStandard({ name });
     res.redirect('/room-standards');
   } catch (err) {
     next(err);

@@ -7,7 +7,7 @@ const getAllRoomStandards = async () => {
   return rows;
 };
 
-const getRoomStandard = async (name) => {
+const getRoomStandard = async ({ name }) => {
   const { rows } = await pool.query(
     `
     SELECT * FROM room_standards
@@ -43,7 +43,7 @@ const updateRoomStandard = async (
   );
 };
 
-const deleteRoomStandard = async (name) => {
+const deleteRoomStandard = async ({ name }) => {
   await pool.query(`  DELETE FROM room_standards WHERE name = $1`, [name]);
 };
 
