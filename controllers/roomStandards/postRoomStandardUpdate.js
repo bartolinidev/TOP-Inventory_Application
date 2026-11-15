@@ -1,6 +1,6 @@
 const db = require('../db/queries/queriesRoomStandards');
 const { validationResult, matchedData } = require('express-validator');
-const validateRoomStandard = require('../../utils/validationRoomStandards');
+const validateRoomStandard = require('../../utils/validateRoomStandard');
 
 const postRoomStandardsUpdate = [
   ...validateRoomStandard,
