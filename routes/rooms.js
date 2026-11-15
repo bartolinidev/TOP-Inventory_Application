@@ -6,6 +6,7 @@ const getRoomCreate = require('../controllers/rooms/getRoomCreate');
 const postRoomCreate = require('../controllers/rooms/postRoomCreate');
 const getRoomsByFloor = require('../controllers/rooms/getRoomsByFloor');
 const getRoomsByBedType = require('../controllers/rooms/getRoomsByBedType');
+const getRoomsByStandard = require('../controllers/rooms/getRoomsByStandard');
 const getRoomById = require('../controllers/rooms/getRoomById');
 const getRoomUpdate = require('../controllers/rooms/getRoomUpdate');
 const postRoomUpdate = require('../controllers/rooms/postRoomUpdate');
