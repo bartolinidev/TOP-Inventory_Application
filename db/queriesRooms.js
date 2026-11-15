@@ -139,7 +139,7 @@ const updateRoom = async (
   );
 };
 
-const deleteRoom = async (id) => {
+const deleteRoom = async ({ id }) => {
   await pool.query(`DELETE FROM rooms WHERE id = $1`, [id]);
 };
 
