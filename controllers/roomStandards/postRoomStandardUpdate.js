@@ -2,7 +2,7 @@ const db = require('../db/queries/queriesRoomStandards');
 const { validationResult, matchedData } = require('express-validator');
 const validateRoomStandard = require('../../utils/validateRoomStandard');
 
-const postRoomStandardsUpdate = [
+const postRoomStandardUpdate = [
   ...validateRoomStandard,
   async (req, res, next) => {
     try {
@@ -31,4 +31,4 @@ const postRoomStandardsUpdate = [
   },
 ];
 
-module.exports = postRoomStandardsUpdate;
+module.exports = postRoomStandardUpdate;
