@@ -4,7 +4,9 @@ const postRoomStandardDelete = async (req, res, next) => {
   const { name } = req.params;
 
   try {
-    const roomsUsingStandard = await db.countRoomsInStandard(name);
+    const roomsUsingStandard = await db.countRoomsInStandard({
+      standard: name,
+    });
 
     if (roomsUsingStandard > 0) {
       const allStandards = await db.getAllRoomStandards();
