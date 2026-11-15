@@ -15,7 +15,6 @@ const validateRoomStandard = [
     .trim()
     .isDecimal({
       decimal_digits: 2,
-      force_decimal: true,
     })
     .isLength({ min: 1, max: 11 })
     .withMessage(`Price must contain max 10 digits`),
