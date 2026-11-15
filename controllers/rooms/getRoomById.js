@@ -7,7 +7,7 @@ const getRoomById = async (req, res, next) => {
     const room = await db.getRoomById({ id });
 
     res.render('roomDetails', {
-      title: `Rooms #${id} details`,
+      title: `Room #${id} details`,
       room,
     });
   } catch (err) {
