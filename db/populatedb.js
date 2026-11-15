@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS rooms (
   room_standard_id INTEGER REFERENCES room_standards(id),
   floor INTEGER,
   bed_type TEXT,
-  accessible BOOLEAN
+  accessible BOOLEAN DEFAULT false
 )`;
 
 const seedRoomsQuery = `
