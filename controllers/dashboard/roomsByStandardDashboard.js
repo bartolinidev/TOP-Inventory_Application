@@ -1,6 +1,6 @@
 const db = require('../../db/queriesRooms');
 
-const roomsByStandard = async (req, res, next) => {
+const roomsByStandardDashboard = async (req, res, next) => {
   try {
     const roomStandards = await db.countRoomsGroupedByStandard();
 
@@ -13,4 +13,4 @@ const roomsByStandard = async (req, res, next) => {
   }
 };
 
-module.exports = roomsByStandard;
+module.exports = roomsByStandardDashboard;
