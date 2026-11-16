@@ -1,4 +1,4 @@
-const db = require('../../db/queries/queriesRoomStandards');
+const db = require('../../db/queriesRoomStandards');
 
 const getAllRoomStandards = async (req, res, next) => {
   try {

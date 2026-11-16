@@ -1,4 +1,4 @@
-const db = require('../../db/queries/queriesRooms');
+const db = require('../../db/queriesRooms');
 const { validationResult, matchedData } = require('express-validator');
 const validateRoom = require('../../utils/validateRoom');
 
