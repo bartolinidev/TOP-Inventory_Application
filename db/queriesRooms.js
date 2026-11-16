@@ -176,6 +176,37 @@ const countRoomsByFloor = async ({ floor }) => {
   return Number(rows[0].count);
 };
 
+const countRoomsGroupedByBedType = async () => {
+  const { rows } = await pool.query(
+    `SELECT bed_type, COUNT(*) FROM rooms
+    GROUP BY bed_type
+    ORDER BY bed_type`,
+  );
+  return rows;
+};
+
+const countRoomsGroupedByFloor = async () => {
+  const { rows } = await pool.query(
+    `SELECT floor, COUNT(*) FROM rooms
+    GROUP BY floor
+    ORDER BY floor`,
+  );
+  return rows;
+};
+
+const countRoomsGroupedByStandard = async () => {
+  const { rows } = await pool.query(
+    `SELECT
+      room_standards.name, 
+      COUNT(rooms.id)
+    FROM room_standards
+    LEFT JOIN rooms ON rooms.room_standard_id = room_standards.id
+    GROUP BY room_standards.name, room_standards.id
+    ORDER BY room_standards.id ASC`,
+  );
+  return rows;
+};
+
 module.exports = {
   getAllRooms,
   createRoom,
@@ -189,4 +220,7 @@ module.exports = {
   countRoomsInStandard,
   countRoomsByBedType,
   countRoomsByFloor,
+  countRoomsGroupedByBedType,
+  countRoomsGroupedByFloor,
+  countRoomsGroupedByStandard,
 };
