@@ -11,7 +11,7 @@ const getRoomStandard = async ({ name }) => {
   const { rows } = await pool.query(
     `
     SELECT * FROM room_standards
-    WHERE name = $1
+    WHERE LOWER(name) = LOWER($1)
   `,
     [name],
   );
@@ -26,7 +26,7 @@ const createRoomStandard = async ({
 }) => {
   await pool.query(
     `INSERT INTO room_standards (name, coffee_machine, bathtub, price)
-    VALUES ($1, $2, $3, $4)`,
+    VALUES (LOWER($1), $2, $3, $4)`,
     [name, coffee_machine, bathtub, price],
   );
 };
@@ -37,14 +37,17 @@ const updateRoomStandard = async (
 ) => {
   await pool.query(
     `UPDATE room_standards
-    SET name = $1, coffee_machine = $2, bathtub = $3, price = $4
-    WHERE name = $5`,
+    SET name = LOWER($1), coffee_machine = $2, bathtub = $3, price = $4
+    WHERE LOWER(name) = LOWER($5)`,
     [name, coffee_machine, bathtub, price, originalName],
   );
 };
 
 const deleteRoomStandard = async ({ name }) => {
-  await pool.query(`  DELETE FROM room_standards WHERE name = $1`, [name]);
+  await pool.query(
+    `  DELETE FROM room_standards WHERE LOWER(name) = LOWER($1)`,
+    [name],
+  );
 };
 
 module.exports = {

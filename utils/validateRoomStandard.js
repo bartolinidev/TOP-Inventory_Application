@@ -1,9 +1,10 @@
 const { body } = require('express-validator');
-const db = '../db/queriesRoomStandards';
+const db = require('../db/queriesRoomStandards');
 
 const validateRoomStandard = [
   body('name')
     .trim()
+    .toLowerCase()
     .isLength({ min: 1, max: 20 })
     .withMessage(`Room standard name length must be 1-20`)
     .custom(async (name) => {

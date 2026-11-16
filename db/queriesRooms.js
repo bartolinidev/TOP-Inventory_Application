@@ -34,7 +34,7 @@ const createRoom = async ({
       bed_type,
       accessible
       )
-    VALUES ($1, $2, $3, $4, $5)`,
+    VALUES ($1, $2, $3, LOWER($4), $5)`,
     [id, room_standard_id, floor, bed_type, accessible],
   );
 };
@@ -75,7 +75,7 @@ const getRoomsByStandard = async ({ standard }) => {
       room_standards.price
     FROM rooms
     JOIN room_standards ON rooms.room_standard_id = room_standards.id
-    WHERE room_standards.name = $1
+    WHERE LOWER(room_standards.name) = LOWER($1)
     ORDER BY rooms.id ASC;
     `,
     [standard],
@@ -97,7 +97,7 @@ const getRoomsByBedType = async ({ bed_type }) => {
       room_standards.price
     FROM rooms
     JOIN room_standards ON rooms.room_standard_id = room_standards.id
-    WHERE rooms.bed_type = $1
+    WHERE LOWER(rooms.bed_type) = LOWER($1)
     ORDER BY rooms.id ASC;
     `,
     [bed_type],
@@ -133,7 +133,7 @@ const updateRoom = async (
 ) => {
   await pool.query(
     `UPDATE rooms
-      SET id = $1, room_standard_id = $2, floor = $3, bed_type = $4, accessible = $5
+      SET id = $1, room_standard_id = $2, floor = $3, bed_type = LOWER($4), accessible = $5
       WHERE id = $6`,
     [id, room_standard_id, floor, bed_type, accessible, originalId],
   );
@@ -152,7 +152,7 @@ const countRoomsInStandard = async ({ standard }) => {
   const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
          JOIN room_standards ON rooms.room_standard_id = room_standards.id
-         WHERE room_standards.name = $1`,
+         WHERE LOWER(room_standards.name) = LOWER($1)`,
     [standard],
   );
   return Number(rows[0].count);
@@ -161,7 +161,7 @@ const countRoomsInStandard = async ({ standard }) => {
 const countRoomsByBedType = async ({ bed_type }) => {
   const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
-         WHERE bed_type = $1`,
+         WHERE LOWER(bed_type) = LOWER($1)`,
     [bed_type],
   );
   return Number(rows[0].count);
