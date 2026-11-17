@@ -26,6 +26,4 @@ dashboardRouter.get('/dashboard/rooms/by-standard', roomsByStandardDashboard);
 // GET /dashboard/rooms/by-floor
 dashboardRouter.get('/dashboard/rooms/by-floor', roomsByFloorDashboard);
 
-// GET /dashboard/standards
-
 module.exports = dashboardRouter;
