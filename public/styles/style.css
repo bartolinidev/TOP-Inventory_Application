@@ -21,6 +21,7 @@ html {
 }
 
 a {
+  color: var(--color-text-primary);
   text-decoration: none;
   cursor: pointer;
 }
@@ -151,12 +152,29 @@ main section {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow: var(--shadow);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tile:active {
+  box-shadow: var(--shadow-hover);
+  transform: scale(0.95);
 }
 
 .tile--main {
   aspect-ratio: 1 / 1;
   width: 200px;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.tile > .arrow {
+  font-size: 2.5rem;
+  font-weight: 900;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* ======================================= */
@@ -166,6 +184,10 @@ main section {
 @media (hover: hover) {
   .tile:hover {
     box-shadow: var(--shadow-hover);
+  }
+
+  .tile:hover > .arrow {
+    transform: translateX(20%);
   }
 }
 
