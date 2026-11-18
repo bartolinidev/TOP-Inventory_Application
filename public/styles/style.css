@@ -12,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-surface);
 }
 
 * {
@@ -22,7 +23,6 @@ html {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: var(--font);
 }
 
 a:visited {
@@ -38,7 +38,7 @@ button {
 
 svg {
   stroke-width: 10;
-  height: 1.3em;
+  height: 1.35em;
   width: auto;
 }
 
@@ -65,30 +65,16 @@ svg {
     'headings-font', 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif; */
 }
 
-[data-theme='dark'] {
-  --color-bg: #052423;
-  --color-surface: #0b3d3b;
-  --color-border: #14b8a6;
-
-  --color-text-primary: #f8fffe;
-  --color-text-secondary: #e6fffb;
-
-  --color-accent: #14b8a6;
-  --color-accent-text: #052423;
-
-  --shadow:
-    0 10px 25px -5px rgba(5, 36, 35, 0.75),
-    inset 0 1px 0 0 rgba(153, 246, 228, 0.15);
-  --shadow-hover:
-    0 15px 30px -5px rgba(5, 36, 35, 0.9), 0 0 15px 0 rgba(20, 184, 166, 0.2),
-    inset 0 1px 0 0 rgba(153, 246, 228, 0.25);
-}
-
 body {
   -webkit-tap-highlight-color: transparent;
   text-wrap: pretty;
   line-height: 1.5;
   font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
 }
 
 h1,
@@ -97,7 +83,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
+  /* font-family: var(--font-heading); */
 }
 
 .container {
@@ -107,21 +93,34 @@ h6 {
   padding-inline: 16px;
 }
 
+header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
-  padding-block: 16px;
+  padding-block: 8px;
 }
 
 .header-container a,
 .header-container button {
   display: flex;
   flex-direction: column;
+  color: var(--color-text-primary);
 }
 
 footer {
   padding-block: 16px;
   text-align: center;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+main {
+  flex: 1;
 }
 
 /* ======================================= */
@@ -163,5 +162,26 @@ footer {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #052423;
+    --color-surface: #0b3d3b;
+    --color-border: #14b8a6;
+
+    --color-text-primary: #f8fffe;
+    --color-text-secondary: #e6fffb;
+
+    --color-accent: #14b8a6;
+    --color-accent-text: #052423;
+
+    --shadow:
+      0 10px 25px -5px rgba(5, 36, 35, 0.75),
+      inset 0 1px 0 0 rgba(153, 246, 228, 0.15);
+    --shadow-hover:
+      0 15px 30px -5px rgba(5, 36, 35, 0.9), 0 0 15px 0 rgba(20, 184, 166, 0.2),
+      inset 0 1px 0 0 rgba(153, 246, 228, 0.25);
   }
 }
