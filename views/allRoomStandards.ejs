@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <div class="container">
+        <h1><%= title %></h1>
+        <section>
+          <% standards.forEach((s) => { %>
+          <a
+            href="/room-standards/<%= s.name %>/update"
+            class="tile tile--standard"
+          >
+            <b><%= s.name %></b>
+
+            <div class="tile__amenities">
+              <%- include('partials/icons/tv') %> <%-
+              include('partials/icons/wifi') %> <%-
+              include('partials/icons/kettleSet') %> <%-
+              include('partials/icons/shower') %> <% if (s.coffee_machine) { %>
+              <%- include('partials/icons/coffeeMachine') %> <% } %> <% if
+              (s.bathtub) { %> <%- include('partials/icons/bathtub') %> <% } %>
+            </div>
+
+            <span>
+              <strong>$<%= s.price %></strong> / night</span
+            >
+
+            <span class="arrow" aria-hidden="true">&rarr;</span></a
+          >
+          <% }) %>
+        </section>
+      </div>
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>
