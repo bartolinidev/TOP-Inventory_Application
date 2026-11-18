@@ -38,7 +38,6 @@ button {
 }
 
 svg {
-  stroke-width: 10;
   height: 1.35em;
   width: auto;
 }
@@ -51,8 +50,8 @@ svg {
   --color-text-primary: #052423;
   --color-text-secondary: #18817e;
 
-  --color-accent: #14b8a6;
-  --color-accent-text: #052423;
+  --color-accent: #d97706;
+  --color-accent-text: #f8fffe;
 
   --shadow:
     0 4px 6px -1px rgba(5, 36, 35, 0.08), 0 10px 15px -3px rgba(5, 36, 35, 0.06);
@@ -136,6 +135,7 @@ main h1 {
   flex-direction: column;
   align-items: center;
   gap: 4px;
+  margin-bottom: 32px;
 }
 
 main section {
@@ -153,7 +153,11 @@ main section {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   box-shadow: var(--shadow);
+  aspect-ratio: 1 / 1;
+  width: 250px;
+  height: auto;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 16px;
 }
 
 .tile:active {
@@ -162,9 +166,6 @@ main section {
 }
 
 .tile--main {
-  aspect-ratio: 1 / 1;
-  width: 200px;
-  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,10 +173,32 @@ main section {
   justify-content: center;
 }
 
+.tile--standard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+}
+
 .tile > .arrow {
   font-size: 2.5rem;
   font-weight: 900;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: var(--color-accent);
+  align-self: center;
+  width: fit-content;
+}
+
+.tile__amenities {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 12px;
+}
+
+.tile__amenities svg {
   color: var(--color-text-secondary);
 }
 
@@ -241,7 +264,7 @@ main section {
     --color-text-primary: #f8fffe;
     --color-text-secondary: #99ffee;
 
-    --color-accent: #14b8a6;
+    --color-accent: #f59e0b;
     --color-accent-text: #052423;
 
     --shadow:
