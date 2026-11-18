@@ -36,6 +36,12 @@ button {
   border: none;
 }
 
+svg {
+  stroke-width: 10;
+  height: 1.3em;
+  width: auto;
+}
+
 :root {
   --color-bg: #f8fffe;
   --color-surface: #e6fffb;
@@ -99,6 +105,23 @@ h6 {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 16px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding-block: 16px;
+}
+
+.header-container a,
+.header-container button {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  padding-block: 16px;
+  text-align: center;
 }
 
 /* ======================================= */
