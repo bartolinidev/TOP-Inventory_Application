@@ -1,12 +1,16 @@
-const db = require('../../db/queriesRooms');
+const db = require("../../db/queriesRooms");
 
 const roomsDashboard = async (req, res, next) => {
   try {
-    const countAllRooms = await db.countAllRooms();
+    const [countAllRooms, countAccessibleRooms] = await Promise.all([
+      db.countAllRooms(),
+      db.countAccessibleRooms(),
+    ]);
 
-    res.render('roomsDashboard', {
-      title: 'Rooms Dashboard',
+    res.render("roomsDashboard", {
+      title: "Rooms Dashboard",
       countAllRooms,
+      countAccessibleRooms,
     });
   } catch (err) {
     next(err);
