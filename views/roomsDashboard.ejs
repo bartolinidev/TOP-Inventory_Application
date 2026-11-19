@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <%- include('partials/header') %>
+    <main>
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <a href="/rooms/create" class="add-btn"
+          >Add room <span class="plus" aria-hidden="true">&plus;</span></a
+        >
+        <section>
+          <a href="/rooms" class="tile tile--roomsDashboard">
+            <span><b>All rooms</b> (<%= countAllRooms %>)</span>
+            <span class="tile__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            href="/dashboard/rooms/by-standard"
+            class="tile tile--roomsDashboard"
+          >
+            <b>Group by standard</b>
+            <span class="tile__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a
+            href="/dashboard/rooms/by-bed-type"
+            class="tile tile--roomsDashboard"
+          >
+            <b>Group by bed Type</b>
+            <span class="tile__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a href="/dashboard/rooms/by-floor" class="tile tile--roomsDashboard">
+            <b>Group by floor</b>
+            <span class="tile__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </section>
+      </div>
+    </main>
+    <%- include('partials/footer') %>
+  </body>
+</html>
