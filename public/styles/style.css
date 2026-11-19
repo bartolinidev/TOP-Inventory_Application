@@ -235,11 +235,11 @@ main section {
     box-shadow: var(--shadow-hover);
   }
 
-  .tile:hover > .arrow {
+  .tile:hover .tile__arrow {
     transform: translateX(20%);
   }
 
-  .add-btn:hover > .plus {
+  .add-btn:hover .add-btn__plus {
     transform: scale(1.3);
   }
 }
