@@ -14,10 +14,10 @@ const postRoomStandardUpdate = [
         });
       }
 
-      const originalName = req.params.name;
+      const originalId = req.params.id;
 
       const { name, coffee_machine, bathtub, price } = matchedData(req);
-      await db.updateRoomStandard(originalName, {
+      await db.updateRoomStandard(originalId, {
         name,
         coffee_machine,
         bathtub,

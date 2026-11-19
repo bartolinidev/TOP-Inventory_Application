@@ -1,4 +1,4 @@
-const pool = require('./pool');
+const pool = require("./pool");
 
 const getAllRooms = async () => {
   const { rows } = await pool.query(`
@@ -75,7 +75,7 @@ const getRoomsByStandard = async ({ standard }) => {
       room_standards.price
     FROM rooms
     JOIN room_standards ON rooms.room_standard_id = room_standards.id
-    WHERE LOWER(room_standards.name) = LOWER($1)
+    WHERE rooms.room_standard_id = $1
     ORDER BY rooms.id ASC;
     `,
     [standard],
@@ -148,16 +148,6 @@ const countAllRooms = async () => {
   return Number(rows[0].count);
 };
 
-const countRoomsInStandard = async ({ standard }) => {
-  const { rows } = await pool.query(
-    `SELECT COUNT(*) FROM rooms
-         JOIN room_standards ON rooms.room_standard_id = room_standards.id
-         WHERE LOWER(room_standards.name) = LOWER($1)`,
-    [standard],
-  );
-  return Number(rows[0].count);
-};
-
 const countRoomsByBedType = async ({ bed_type }) => {
   const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
@@ -197,11 +187,12 @@ const countRoomsGroupedByFloor = async () => {
 const countRoomsGroupedByStandard = async () => {
   const { rows } = await pool.query(
     `SELECT
+      room_standards.id,
       room_standards.name, 
       COUNT(rooms.id)
     FROM room_standards
     LEFT JOIN rooms ON rooms.room_standard_id = room_standards.id
-    GROUP BY room_standards.name, room_standards.id
+    GROUP BY room_standards.id, room_standards.name
     ORDER BY room_standards.id ASC`,
   );
   return rows;
@@ -217,7 +208,6 @@ module.exports = {
   updateRoom,
   deleteRoom,
   countAllRooms,
-  countRoomsInStandard,
   countRoomsByBedType,
   countRoomsByFloor,
   countRoomsGroupedByBedType,

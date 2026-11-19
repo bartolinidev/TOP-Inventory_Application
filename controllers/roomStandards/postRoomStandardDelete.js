@@ -1,28 +1,29 @@
-const db = require('../../db/queriesRoomStandards');
+const db = require("../../db/queriesRoomStandards");
 
 const postRoomStandardDelete = async (req, res, next) => {
-  const { name } = req.params;
+  const id = Number(req.params.id);
 
   try {
     const roomsUsingStandard = await db.countRoomsInStandard({
-      standard: name,
+      standard: id,
     });
 
     if (roomsUsingStandard > 0) {
       const allStandards = await db.getAllRoomStandards();
-      const otherStandards = allStandards.filter((std) => std.name !== name);
+      const pickedStandard = allStandards.find((std) => std.id === id);
+      const otherStandards = allStandards.filter((std) => std.id !== id);
 
-      return res.status(400).render('deleteRoomStandard', {
-        title: 'Delete Room Standard',
-        standardName: name,
+      return res.status(400).render("deleteRoomStandard", {
+        title: "Delete Room Standard",
+        pickedStandard,
         otherStandards,
         error:
-          'Cannot delete this standard because there are rooms assigned to it.',
+          "Cannot delete this standard because there are rooms assigned to it.",
       });
     }
 
-    await db.deleteRoomStandard({ name });
-    res.redirect('/room-standards');
+    await db.deleteRoomStandard({ id });
+    res.redirect("/room-standards");
   } catch (err) {
     next(err);
   }

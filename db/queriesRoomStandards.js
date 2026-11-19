@@ -1,19 +1,20 @@
-const pool = require('./pool');
+const pool = require("./pool");
 
 const getAllRoomStandards = async () => {
   const { rows } = await pool.query(`
     SELECT * FROM room_standards
+    ORDER BY id ASC
   `);
   return rows;
 };
 
-const getRoomStandard = async ({ name }) => {
+const getRoomStandard = async ({ id }) => {
   const { rows } = await pool.query(
     `
     SELECT * FROM room_standards
-    WHERE LOWER(name) = LOWER($1)
+    WHERE id = $1
   `,
-    [name],
+    [id],
   );
   return rows[0];
 };
@@ -32,22 +33,28 @@ const createRoomStandard = async ({
 };
 
 const updateRoomStandard = async (
-  originalName,
+  originalId,
   { name, coffee_machine, bathtub, price },
 ) => {
   await pool.query(
     `UPDATE room_standards
     SET name = LOWER($1), coffee_machine = $2, bathtub = $3, price = $4
-    WHERE LOWER(name) = LOWER($5)`,
-    [name, coffee_machine, bathtub, price, originalName],
+    WHERE id = $5`,
+    [name, coffee_machine, bathtub, price, originalId],
   );
 };
 
-const deleteRoomStandard = async ({ name }) => {
-  await pool.query(
-    `  DELETE FROM room_standards WHERE LOWER(name) = LOWER($1)`,
-    [name],
+const deleteRoomStandard = async ({ id }) => {
+  await pool.query(`DELETE FROM room_standards WHERE id = $1`, [id]);
+};
+
+const countRoomsInStandard = async ({ standard }) => {
+  const { rows } = await pool.query(
+    `SELECT COUNT(*) FROM rooms
+     WHERE room_standard_id = $1`,
+    [standard],
   );
+  return Number(rows[0].count);
 };
 
 module.exports = {
@@ -56,4 +63,5 @@ module.exports = {
   createRoomStandard,
   updateRoomStandard,
   deleteRoomStandard,
+  countRoomsInStandard,
 };
