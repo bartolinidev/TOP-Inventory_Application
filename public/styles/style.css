@@ -110,12 +110,6 @@ footer {
   border-top: 1px solid var(--color-border);
 }
 
-.container.main {
-  flex: 1;
-  padding-block: 16px;
-  height: 100%;
-}
-
 main {
   flex: 1;
   padding-block: 32px;
@@ -135,10 +129,38 @@ main h1 {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  margin-bottom: 32px;
+}
+
+main .add-btn {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 32px;
+  margin-block: 32px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.add-btn:active {
+  transform: scale(0.95);
+}
+
+.add-btn > .plus {
+  font-size: 1.5rem;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: var(--color-accent);
+  align-self: center;
+  width: fit-content;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 main section {
+  border-top: 1px dotted var(--color-border);
+  padding-top: 32px;
   flex: 1;
   display: flex;
   align-items: center;
@@ -161,7 +183,6 @@ main section {
 }
 
 .tile:active {
-  box-shadow: var(--shadow-hover);
   transform: scale(0.95);
 }
 
@@ -207,12 +228,17 @@ main section {
 /* ===================================== */
 
 @media (hover: hover) {
-  .tile:hover {
+  .tile:hover,
+  .add-btn:hover {
     box-shadow: var(--shadow-hover);
   }
 
   .tile:hover > .arrow {
     transform: translateX(20%);
+  }
+
+  .add-btn:hover > .plus {
+    transform: scale(1.3);
   }
 }
 
