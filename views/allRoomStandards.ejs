@@ -7,7 +7,8 @@
       <div class="container">
         <h1><%= title %></h1>
         <a href="/room-standards/create" class="add-btn"
-          >Add standard <span class="plus" aria-hidden="true">&plus;</span></a
+          >Add standard
+          <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
         >
         <section>
           <% standards.forEach((s) => { %>
@@ -30,7 +31,7 @@
               <strong>$<%= s.price %></strong> / night</span
             >
 
-            <span class="arrow" aria-hidden="true">&rarr;</span></a
+            <span class="tile__arrow" aria-hidden="true">&rarr;</span></a
           >
           <% }) %>
         </section>
