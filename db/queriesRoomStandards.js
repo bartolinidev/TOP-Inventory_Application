@@ -48,11 +48,11 @@ const deleteRoomStandard = async ({ id }) => {
   await pool.query(`DELETE FROM room_standards WHERE id = $1`, [id]);
 };
 
-const countRoomsInStandard = async ({ standard }) => {
+const countRoomsInStandard = async ({ id }) => {
   const { rows } = await pool.query(
     `SELECT COUNT(*) FROM rooms
      WHERE room_standard_id = $1`,
-    [standard],
+    [id],
   );
   return Number(rows[0].count);
 };
