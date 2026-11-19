@@ -150,7 +150,7 @@ main .add-btn {
   transform: scale(0.95);
 }
 
-.add-btn > .plus {
+.add-btn__plus {
   font-size: 1.5rem;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
   color: var(--color-accent);
@@ -187,7 +187,8 @@ main section {
   transform: scale(0.95);
 }
 
-.tile--main {
+.tile--main,
+.tile--roomsDashboard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,7 +204,7 @@ main section {
   justify-content: space-around;
 }
 
-.tile > .arrow {
+.tile__arrow {
   font-size: 2.5rem;
   font-weight: 900;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
