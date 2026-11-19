@@ -127,6 +127,27 @@ const getRoomById = async ({ id }) => {
   return rows[0];
 };
 
+const getAccessibleRooms = async () => {
+  const { rows } = await pool.query(
+    `
+    SELECT 
+      rooms.id, 
+      rooms.floor, 
+      rooms.bed_type, 
+      rooms.accessible,
+      room_standards.name AS room_standard_name,
+      room_standards.coffee_machine,
+      room_standards.bathtub,
+      room_standards.price
+    FROM rooms
+    JOIN room_standards ON rooms.room_standard_id = room_standards.id
+    WHERE rooms.accessible = TRUE
+    ORDER BY rooms.id ASC;
+    `,
+  );
+  return rows;
+};
+
 const updateRoom = async (
   originalId,
   { id, room_standard_id, floor, bed_type, accessible = false },
@@ -145,6 +166,14 @@ const deleteRoom = async ({ id }) => {
 
 const countAllRooms = async () => {
   const { rows } = await pool.query(`SELECT COUNT(*) FROM rooms`);
+  return Number(rows[0].count);
+};
+
+const countAccessibleRooms = async () => {
+  const { rows } = await pool.query(`
+    SELECT COUNT(*) FROM rooms
+      WHERE accessible = TRUE
+    `);
   return Number(rows[0].count);
 };
 
@@ -205,9 +234,11 @@ module.exports = {
   getRoomsByStandard,
   getRoomsByBedType,
   getRoomById,
+  getAccessibleRooms,
   updateRoom,
   deleteRoom,
   countAllRooms,
+  countAccessibleRooms,
   countRoomsByBedType,
   countRoomsByFloor,
   countRoomsGroupedByBedType,
