@@ -15,7 +15,7 @@
             href="/room-standards/<%= s.id %>/update"
             class="tile tile--standard"
           >
-            <b><%= s.name %></b>
+            <span><b><%= s.name %></b> (<%= count[s.id] %>)</span>
 
             <div class="tile__amenities">
               <%- include('partials/icons/tv') %> <%-
