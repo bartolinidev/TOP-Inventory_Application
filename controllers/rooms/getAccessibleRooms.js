@@ -1,11 +1,11 @@
-const db = require("../../db/queriesRooms");
+const db = require('../../db/queriesRooms');
 
 const getAccessibleRooms = async (req, res, next) => {
   try {
     const rooms = await db.getAccessibleRooms();
 
-    res.render("filteredRooms", {
-      title: "Accessible Rooms",
+    res.render('rooms/filteredRooms', {
+      title: 'Accessible Rooms',
       rooms,
     });
   } catch (err) {

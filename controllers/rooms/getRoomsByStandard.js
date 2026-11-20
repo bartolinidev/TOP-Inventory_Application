@@ -14,7 +14,7 @@ const getRoomsByStandard = async (req, res, next) => {
       return res.status(404).render('404', { title: 'Standard not found' });
     }
 
-    res.render('filteredRooms', {
+    res.render('rooms/filteredRooms', {
       title: `Rooms In ${standard.name} Standard`,
       rooms,
     });

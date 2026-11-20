@@ -5,7 +5,7 @@ const getRoomUpdate = async (req, res, next) => {
   try {
     const room = await db.getRoomById({ id });
 
-    res.render('updateRoom', {
+    res.render('rooms/updateRoom', {
       title: 'Update Room',
       room,
     });

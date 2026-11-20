@@ -1,5 +1,5 @@
 const getRoomCreate = (req, res) => {
-  res.render('createRoom', {
+  res.render('rooms/createRoom', {
     title: 'Create Room',
   });
 };

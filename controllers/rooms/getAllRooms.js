@@ -4,7 +4,7 @@ const getAllRooms = async (req, res, next) => {
   try {
     const rooms = await db.getAllRooms();
 
-    res.render('filteredRooms', {
+    res.render('rooms/filteredRooms', {
       title: 'All Rooms',
       rooms,
     });
