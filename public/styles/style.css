@@ -38,7 +38,7 @@ button {
 }
 
 svg {
-  height: 1.35em;
+  height: 1.5em;
   width: auto;
 }
 
@@ -160,14 +160,12 @@ main .add-btn {
 }
 
 main section {
+  width: 100%;
   border-top: 1px dotted var(--color-border);
   padding-top: 32px;
-  flex: 1;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
   justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
   gap: 32px;
 }
 
@@ -188,21 +186,22 @@ main section {
 }
 
 .tile--main,
+.tile--standard,
 .tile--roomsDashboard,
-.tile--groupedRooms {
+.tile--groupedRooms,
+.tile--room {
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
+  gap: 24px;
 }
 
-.tile--standard {
+.tile__row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  align-content: center;
-  justify-content: space-around;
+  gap: 12px;
 }
 
 .tile__arrow {
