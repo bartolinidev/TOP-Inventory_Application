@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+      <div class="container">
+        <h1><%= title %></h1>
+        <a href="/rooms/create" class="add-btn"
+          >Add room
+          <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
+        >
+        <section>
+          <% rooms.forEach((r) => { %>
+          <a href="/rooms/id/<%= r.id %>/update" class="tile tile--room">
+            
+            <span class="tile__row">
+                <strong>
+                    <span aria-label="room number">#</span><%= r.id %>
+                </strong>
+                    <% if (r.accessible) { %>
+                      <%- include('../partials/icons/accessible') %> <% } %>
+            </span>
+
+            <span class="tile__row">
+                <%= r.room_standard_name %>
+                <% if (r.bed_type === 'Single') { %>
+                  <%- include('../partials/icons/singleBed') %>
+                <% } else if (r.bed_type === 'Twin') { %>
+                  <%- include('../partials/icons/twinBeds') %>
+                <% } else if (r.bed_type === 'Double') { %>
+                  <%- include('../partials/icons/doubleBed') %>
+                <% } else { %>
+                  <%= r.bed_type %>
+                <% } %>                
+            </span>
+
+            <div class="tile__amenities">
+              <%- include('../partials/icons/tv') %>
+              <%- include('../partials/icons/wifi') %>
+              <%- include('../partials/icons/kettleSet') %>
+              <%- include('../partials/icons/shower') %> 
+              
+              <% if (r.coffee_machine) { %>
+                <%- include('../partials/icons/coffeeMachine') %> <% } %>
+              <% if (r.bathtub) { %>
+                <%- include('../partials/icons/bathtub') %> <% } %>
+            </div>
+
+            <span class="tile__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <% }) %>
+        </section>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
