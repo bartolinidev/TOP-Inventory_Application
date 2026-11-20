@@ -1,5 +1,5 @@
-const dbRooms = require("../../db/queriesRooms");
-const dbStandards = require("../../db/queriesRoomStandards");
+const dbRooms = require('../../db/queriesRooms');
+const dbStandards = require('../../db/queriesRoomStandards');
 
 const getRoomsByStandard = async (req, res, next) => {
   try {
@@ -11,10 +11,10 @@ const getRoomsByStandard = async (req, res, next) => {
     ]);
 
     if (!standard) {
-      return res.status(404).render("404", { title: "Standard not found" });
+      return res.status(404).render('404', { title: 'Standard not found' });
     }
 
-    res.render("filteredRooms", {
+    res.render('filteredRooms', {
       title: `Rooms in ${standard.name} standard`,
       rooms,
     });
