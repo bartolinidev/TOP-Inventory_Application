@@ -61,7 +61,7 @@ const getRoomsByFloor = async ({ floor }) => {
   return rows;
 };
 
-const getRoomsByStandard = async ({ standard }) => {
+const getRoomsByStandard = async ({ standard_id }) => {
   const { rows } = await pool.query(
     `
     SELECT 
@@ -78,7 +78,7 @@ const getRoomsByStandard = async ({ standard }) => {
     WHERE rooms.room_standard_id = $1
     ORDER BY rooms.id ASC;
     `,
-    [standard],
+    [standard_id],
   );
   return rows;
 };
