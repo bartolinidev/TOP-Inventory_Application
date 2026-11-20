@@ -15,7 +15,7 @@ const getRoomsByStandard = async (req, res, next) => {
     }
 
     res.render('filteredRooms', {
-      title: `Rooms in ${standard.name} standard`,
+      title: `Rooms In ${standard.name} Standard`,
       rooms,
     });
   } catch (err) {

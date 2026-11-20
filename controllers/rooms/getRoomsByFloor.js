@@ -7,7 +7,7 @@ const getRoomsByFloor = async (req, res, next) => {
     const rooms = await db.getRoomsByFloor({ floor });
 
     res.render('filteredRooms', {
-      title: `Rooms on floor ${floor}`,
+      title: `Rooms On Floor #${floor}`,
       rooms,
     });
   } catch (err) {
