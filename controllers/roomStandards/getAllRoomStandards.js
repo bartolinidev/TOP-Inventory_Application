@@ -12,7 +12,7 @@ const getAllRoomStandards = async (req, res, next) => {
     );
     const count = Object.fromEntries(entries);
 
-    res.render("allRoomStandards", {
+    res.render("roomStandards/allRoomStandards", {
       title: "Room Standards",
       standards,
       count,

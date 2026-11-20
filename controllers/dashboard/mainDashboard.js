@@ -1,5 +1,5 @@
 const mainDashboard = (req, res) => {
-  res.render('dashboard', {
+  res.render('dashboard/dashboard', {
     title: 'Dashboard',
   });
 };

@@ -4,7 +4,7 @@ const roomsByStandardDashboard = async (req, res, next) => {
   try {
     const roomStandards = await db.countRoomsGroupedByStandard();
 
-    res.render('roomsByStandardDashboard', {
+    res.render('dashboard/roomsByStandardDashboard', {
       title: 'Rooms By Standard',
       roomStandards,
     });

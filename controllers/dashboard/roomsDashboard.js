@@ -7,7 +7,7 @@ const roomsDashboard = async (req, res, next) => {
       db.countAccessibleRooms(),
     ]);
 
-    res.render("roomsDashboard", {
+    res.render("dashboard/roomsDashboard", {
       title: "Rooms Dashboard",
       countAllRooms,
       countAccessibleRooms,

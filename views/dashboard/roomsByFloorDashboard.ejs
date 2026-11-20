@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head') %>
+  <%- include('../partials/head') %>
   <body>
-    <%- include('partials/header') %>
+    <%- include('../partials/header') %>
     <main>
       <div class="container">
         <h1><%= title %></h1>
@@ -11,18 +11,18 @@
           <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
         >
         <section>
-          <% bedTypes.forEach((t) => { %>
+          <% floors.forEach((f) => { %>
           <a
-            href="/rooms/bed-type/<%= t.bed_type %>"
+            href="/rooms/floor/<%= f.floor %>"
             class="tile tile--groupedRooms"
           >
-            <span><b><%= t.bed_type %></b> (<%= t.count %>)</span>
+            <span><b>Floor #<%= f.floor %></b> (<%= f.count %>)</span>
             <span class="tile__arrow" aria-hidden="true">&rarr;</span>
           </a>
           <% }) %>
         </section>
       </div>
     </main>
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>
   </body>
 </html>

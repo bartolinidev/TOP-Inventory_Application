@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include('partials/head') %>
+  <%- include('../partials/head') %>
   <body>
-    <%- include('partials/header') %>
+    <%- include('../partials/header') %>
     <main>
       <div class="container">
         <h1><%= title %></h1>
@@ -19,12 +19,12 @@
             <span><b><%= s.name %></b> (<%= count[s.id] %>)</span>
 
             <div class="tile__amenities">
-              <%- include('partials/icons/tv') %> <%-
-              include('partials/icons/wifi') %> <%-
-              include('partials/icons/kettleSet') %> <%-
-              include('partials/icons/shower') %> <% if (s.coffee_machine) { %>
-              <%- include('partials/icons/coffeeMachine') %> <% } %> <% if
-              (s.bathtub) { %> <%- include('partials/icons/bathtub') %> <% } %>
+              <%- include('../partials/icons/tv') %> <%-
+              include('../partials/icons/wifi') %> <%-
+              include('../partials/icons/kettleSet') %> <%-
+              include('../partials/icons/shower') %> <% if (s.coffee_machine) { %>
+              <%- include('../partials/icons/coffeeMachine') %> <% } %> <% if
+              (s.bathtub) { %> <%- include('../partials/icons/bathtub') %> <% } %>
             </div>
 
             <span>
@@ -37,6 +37,6 @@
         </section>
       </div>
     </main>
-    <%- include('partials/footer') %>
+    <%- include('../partials/footer') %>
   </body>
 </html>

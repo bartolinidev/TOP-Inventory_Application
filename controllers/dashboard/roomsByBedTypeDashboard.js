@@ -4,7 +4,7 @@ const roomsByBedTypeDashboard = async (req, res, next) => {
   try {
     const bedTypes = await db.countRoomsGroupedByBedType();
 
-    res.render('roomsByBedTypeDashboard', {
+    res.render('dashboard/roomsByBedTypeDashboard', {
       title: 'Rooms By Bed Type',
       bedTypes,
     });
