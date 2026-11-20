@@ -6,6 +6,10 @@
     <main>
       <div class="container">
         <h1><%= title %></h1>
+        <a href="/rooms/create" class="add-btn"
+          >Add room
+          <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
+        >
         <section>
           <% roomStandards.forEach((s) => { %>
           <a href="/rooms/standard/<%= s.id %>" class="tile tile--groupedRooms">
