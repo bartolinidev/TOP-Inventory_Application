@@ -188,7 +188,8 @@ main section {
 }
 
 .tile--main,
-.tile--roomsDashboard {
+.tile--roomsDashboard,
+.tile--groupedRooms {
   display: flex;
   flex-direction: column;
   align-items: center;
