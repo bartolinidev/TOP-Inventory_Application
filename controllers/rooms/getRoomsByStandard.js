@@ -1,13 +1,21 @@
-const db = require('../../db/queriesRooms');
+const dbRooms = require("../../db/queriesRooms");
+const dbStandards = require("../../db/queriesRoomStandards");
 
 const getRoomsByStandard = async (req, res, next) => {
   try {
-    const { standard } = req.params;
+    const { standard_id } = req.params;
 
-    const rooms = await db.getRoomsByStandard({ standard });
+    const [standard, rooms] = await Promise.all([
+      dbStandards.getRoomStandard({ id: standard_id }),
+      dbRooms.getRoomsByStandard({ standard_id }),
+    ]);
 
-    res.render('filteredRooms', {
-      title: `Rooms in ${standard} standard`,
+    if (!standard) {
+      return res.status(404).render("404", { title: "Standard not found" });
+    }
+
+    res.render("filteredRooms", {
+      title: `Rooms in ${standard.name} standard`,
       rooms,
     });
   } catch (err) {
