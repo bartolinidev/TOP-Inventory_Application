@@ -34,7 +34,7 @@ const createRoom = async ({
       bed_type,
       accessible
       )
-    VALUES ($1, $2, $3, LOWER($4), $5)`,
+    VALUES ($1, $2, $3, INITCAP($4), $5)`,
     [id, room_standard_id, floor, bed_type, accessible],
   );
 };
@@ -113,6 +113,7 @@ const getRoomById = async ({ id }) => {
       rooms.floor, 
       rooms.bed_type, 
       rooms.accessible,
+      rooms.room_standard_id,
       room_standards.name AS room_standard_name,
       room_standards.coffee_machine,
       room_standards.bathtub,
@@ -154,7 +155,7 @@ const updateRoom = async (
 ) => {
   await pool.query(
     `UPDATE rooms
-      SET id = $1, room_standard_id = $2, floor = $3, bed_type = LOWER($4), accessible = $5
+      SET id = $1, room_standard_id = $2, floor = $3, bed_type = INITCAP($4), accessible = $5
       WHERE id = $6`,
     [id, room_standard_id, floor, bed_type, accessible, originalId],
   );
@@ -174,24 +175,6 @@ const countAccessibleRooms = async () => {
     SELECT COUNT(*) FROM rooms
       WHERE accessible = TRUE
     `);
-  return Number(rows[0].count);
-};
-
-const countRoomsByBedType = async ({ bed_type }) => {
-  const { rows } = await pool.query(
-    `SELECT COUNT(*) FROM rooms
-         WHERE LOWER(bed_type) = LOWER($1)`,
-    [bed_type],
-  );
-  return Number(rows[0].count);
-};
-
-const countRoomsByFloor = async ({ floor }) => {
-  const { rows } = await pool.query(
-    `SELECT COUNT(*) FROM rooms
-         WHERE floor = $1`,
-    [floor],
-  );
   return Number(rows[0].count);
 };
 
@@ -239,8 +222,6 @@ module.exports = {
   deleteRoom,
   countAllRooms,
   countAccessibleRooms,
-  countRoomsByBedType,
-  countRoomsByFloor,
   countRoomsGroupedByBedType,
   countRoomsGroupedByFloor,
   countRoomsGroupedByStandard,

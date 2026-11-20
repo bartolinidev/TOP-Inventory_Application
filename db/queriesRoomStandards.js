@@ -27,7 +27,7 @@ const createRoomStandard = async ({
 }) => {
   await pool.query(
     `INSERT INTO room_standards (name, coffee_machine, bathtub, price)
-    VALUES (LOWER($1), $2, $3, $4)`,
+    VALUES (INITCAP($1), $2, $3, $4)`,
     [name, coffee_machine, bathtub, price],
   );
 };
@@ -38,7 +38,7 @@ const updateRoomStandard = async (
 ) => {
   await pool.query(
     `UPDATE room_standards
-    SET name = LOWER($1), coffee_machine = $2, bathtub = $3, price = $4
+    SET name = INITCAP($1), coffee_machine = $2, bathtub = $3, price = $4
     WHERE id = $5`,
     [name, coffee_machine, bathtub, price, originalId],
   );
