@@ -31,7 +31,7 @@ const postRoomCreate = [
         accessible,
       });
 
-      res.redirect('/rooms');
+      res.redirect('/dashboard/rooms');
     } catch (err) {
       next(err);
     }
