@@ -8,16 +8,17 @@ const postRoomStandardUpdate = [
   ...validateRoomStandard,
   async (req, res, next) => {
     try {
+      const originalId = req.params.id;
       const errors = validationResult(req);
+
       if (!errors.isEmpty()) {
+        const standard = await db.getRoomStandard({ id: originalId });
         return res.status(400).render('roomStandards/updateRoomStandard', {
           standard,
           title: `Update ${standard.name} Standard`,
           errors: errors.array(),
         });
       }
-
-      const originalId = req.params.id;
 
       const { name, coffee_machine, bathtub, price } = matchedData(req);
       await db.updateRoomStandard(originalId, {
