@@ -1,8 +1,8 @@
-const { body } = require("express-validator");
-const db = require("../db/queriesRoomStandards");
+const { body } = require('express-validator');
+const db = require('../db/queriesRoomStandards');
 
 const validateRoomStandard = [
-  body("name")
+  body('name')
     .trim()
     .toLowerCase()
     .isLength({ min: 1, max: 20 })
@@ -18,15 +18,17 @@ const validateRoomStandard = [
       if (duplicate) throw new Error();
     })
     .withMessage(`Room standard already exists`),
-  body("price")
+  body('price')
     .trim()
-    .isDecimal({
-      decimal_digits: 2,
-    })
-    .isLength({ min: 1, max: 11 })
+    .isDecimal({ decimal_digits: '0,2' })
+    .withMessage('Price must be a valid amount with up to 2 decimal places')
     .withMessage(`Price must contain max 10 digits`),
-  body("coffee_machine").optional().toBoolean(),
-  body("bathtub").optional().toBoolean(),
+  body('coffee_machine').customSanitizer(
+    (value) => value === 'true' || value === true,
+  ),
+  body('bathtub').customSanitizer(
+    (value) => value === 'true' || value === true,
+  ),
 ];
 
 module.exports = validateRoomStandard;
