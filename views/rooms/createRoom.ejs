@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <section>
+          <form action="/rooms/create" method="post">
+            <fieldset>
+              <legend>Room number</legend>
+              <input type="number" id="id" name="id" min="1" required />
+            </fieldset>
+
+            <fieldset>
+              <legend>Room standard</legend>
+              <% standards.forEach((s) => { %>
+              <div>
+                <input
+                  type="radio"
+                  id="standard-<%= s.id %>"
+                  name="room_standard_id"
+                  value="<%= s.id %>"
+                  required
+                />
+                <label for="standard-<%= s.id %>"><%= s.name %></label>
+              </div>
+              <% }) %>
+            </fieldset>
+
+            <fieldset>
+              <legend>Floor</legend>
+              <input type="number" id="floor" name="floor" min="0" required />
+            </fieldset>
+
+            <fieldset>
+              <legend>Bed type</legend>
+              <% bedTypes.forEach((t) => { %>
+              <div>
+                <input
+                  type="radio"
+                  id="bed-<%= t.toLowerCase() %>"
+                  name="bed_type"
+                  value="<%= t %>"
+                  required
+                />
+                <label for="bed-<%= t.toLowerCase() %>"><%= t %></label>
+              </div>
+              <% }) %>
+            </fieldset>
+
+            <fieldset>
+              <legend>Accessible</legend>
+              <label for="accessible"
+                ><%- include('../partials/icons/accessible') %></label
+              >
+              <input type="checkbox" id="accessible" name="accessible" />
+            </fieldset>
+
+            <button type="submit">Create room</button>
+          </form>
+        </section>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
