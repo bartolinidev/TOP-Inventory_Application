@@ -10,16 +10,16 @@ const postRoomStandardDelete = [
       const roomsUsingStandard = await db.countRoomsInStandard({ id });
 
       if (roomsUsingStandard > 0) {
-        const allStandards = await db.getAllRoomStandards();
-        const pickedStandard = allStandards.find((std) => std.id === id);
-        const otherStandards = allStandards.filter((std) => std.id !== id);
+        const standard = await db.getRoomStandard({ id });
 
-        return res.status(400).render('roomStandards/deleteRoomStandard', {
-          title: 'Delete Room Standard',
-          pickedStandard,
-          otherStandards,
-          error:
-            'Cannot delete this standard because there are rooms assigned to it.',
+        return res.status(400).render('roomStandards/updateRoomStandard', {
+          title: `Update ${standard.name} Standard`,
+          standard,
+          errors: [
+            {
+              msg: `Cannot delete this standard because ${roomsUsingStandard} room(s) are currently assigned to it.`,
+            },
+          ],
         });
       }
 
