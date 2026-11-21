@@ -9,6 +9,7 @@
           <%= title %>
         </h1>
         <section>
+          <%- include('../partials/errors') %>
           <form action="/rooms/create" method="post">
             <fieldset>
               <legend>Room number</legend>
@@ -54,14 +55,24 @@
 
             <fieldset>
               <legend>Accessible</legend>
-              <label for="accessible"
-                ><%- include('../partials/icons/accessible') %></label
-              >
               <input
                 type="checkbox"
                 id="accessible"
                 name="accessible"
                 value="true"
+              />
+              <label for="accessible"
+                ><%- include('../partials/icons/accessible') %></label
+              >
+            </fieldset>
+
+            <fieldset>
+              <legend>Admin password</legend>
+              <input
+                type="password"
+                id="admin_password"
+                name="admin_password"
+                required
               />
             </fieldset>
 
