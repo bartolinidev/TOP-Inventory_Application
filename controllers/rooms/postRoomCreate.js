@@ -8,7 +8,7 @@ const postRoomCreate = [
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).render('rooms/getRoomCreate', {
+        return res.status(400).render('rooms/createRoom', {
           title: 'Create Room',
           errors: errors.array(),
         });
