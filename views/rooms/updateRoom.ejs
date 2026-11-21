@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+      <div class="container">
+        <h1>
+          <%= title %>
+          #<%= room.id %>
+        </h1>
+        <section>
+          <%- include('../partials/errors') %>
+          <form action="/rooms/id/<%= room.id %>/update" method="post">
+            <fieldset>
+              <legend>Room number</legend>
+              <input
+                type="number"
+                id="id"
+                name="id"
+                min="1"
+                value="<%= room.id %>"
+                required
+              />
+            </fieldset>
+
+            <fieldset>
+              <legend>Room standard</legend>
+              <% standards.forEach((s) => { %>
+              <div>
+                <% if (room.room_standard_id === s.id) { %>
+                <input
+                  type="radio"
+                  id="standard-<%= s.id %>"
+                  name="room_standard_id"
+                  value="<%= s.id %>"
+                  checked
+                  required
+                />
+                <% } else { %>
+                <input
+                  type="radio"
+                  id="standard-<%= s.id %>"
+                  name="room_standard_id"
+                  value="<%= s.id %>"
+                  required
+                />
+                <% } %>
+                <label for="standard-<%= s.id %>"><%= s.name %></label>
+              </div>
+              <% }) %>
+            </fieldset>
+
+            <fieldset>
+              <legend>Floor</legend>
+              <input
+                type="number"
+                id="floor"
+                name="floor"
+                min="0"
+                value="<%= room.floor %>"
+                required
+              />
+            </fieldset>
+
+            <fieldset>
+              <legend>Bed type</legend>
+              <% bedTypes.forEach((t) => { %>
+              <div>
+                <% if (room.bed_type === t) { %>
+                <input
+                  type="radio"
+                  id="bed-<%= t.toLowerCase() %>"
+                  name="bed_type"
+                  value="<%= t %>"
+                  checked
+                  required
+                />
+                <% } else { %>
+                <input
+                  type="radio"
+                  id="bed-<%= t.toLowerCase() %>"
+                  name="bed_type"
+                  value="<%= t %>"
+                  required
+                />
+                <% } %>
+                <label for="bed-<%= t.toLowerCase() %>"><%= t %></label>
+              </div>
+              <% }) %>
+            </fieldset>
+
+            <fieldset>
+              <legend>Accessible</legend>
+              <% if (room.accessible) { %>
+              <input
+                type="checkbox"
+                id="accessible"
+                name="accessible"
+                value="true"
+                checked
+              />
+              <% } else { %>
+              <input
+                type="checkbox"
+                id="accessible"
+                name="accessible"
+                value="true"
+              />
+              <% } %>
+              <label for="accessible"
+                ><%- include('../partials/icons/accessible') %></label
+              >
+            </fieldset>
+
+            <fieldset>
+              <legend>Admin password</legend>
+              <input
+                type="password"
+                id="admin_password"
+                name="admin_password"
+                required
+              />
+            </fieldset>
+
+            <button type="submit">Confirm update</button>
+          </form>
+
+          <form action="/rooms/id/<%= room.id %>/delete" method="post">
+            <fieldset>
+              <legend>Delete room</legend>
+              <label for="delete_admin_password">Admin password</label>
+              <input
+                type="password"
+                id="delete_admin_password"
+                name="admin_password"
+                required
+              />
+              <button type="submit">Confirm delete</button>
+            </fieldset>
+          </form>
+        </section>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
