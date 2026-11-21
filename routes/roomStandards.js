@@ -2,8 +2,8 @@ const { Router } = require('express');
 const roomStandardsRouter = Router();
 
 const getAllRoomStandards = require('../controllers/roomStandards/getAllRoomStandards');
-const getRoomStandardsCreate = require('../controllers/roomStandards/getRoomStandardsCreate');
-const postRoomStandardsCreate = require('../controllers/roomStandards/postRoomStandardCreate');
+const getRoomStandardCreate = require('../controllers/roomStandards/getRoomStandardCreate');
+const postRoomStandardCreate = require('../controllers/roomStandards/postRoomStandardCreate');
 const getRoomStandardUpdate = require('../controllers/roomStandards/getRoomStandardUpdate');
 const postRoomStandardUpdate = require('../controllers/roomStandards/postRoomStandardUpdate');
 const postRoomStandardDelete = require('../controllers/roomStandards/postRoomStandardDelete');
@@ -12,10 +12,10 @@ const postRoomStandardDelete = require('../controllers/roomStandards/postRoomSta
 roomStandardsRouter.get('/', getAllRoomStandards);
 
 // GET /room-standards/create
-roomStandardsRouter.get('/create', getRoomStandardsCreate);
+roomStandardsRouter.get('/create', getRoomStandardCreate);
 
 // POST /room-standards/create
-roomStandardsRouter.post('/create', postRoomStandardsCreate);
+roomStandardsRouter.post('/create', postRoomStandardCreate);
 
 // GET /room-standards/:id/update
 roomStandardsRouter.get('/:id/update', getRoomStandardUpdate);

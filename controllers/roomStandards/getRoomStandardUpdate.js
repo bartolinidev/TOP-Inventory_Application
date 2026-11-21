@@ -5,7 +5,7 @@ const getRoomStandardUpdate = async (req, res, next) => {
   try {
     const standard = await db.getRoomStandard({ id });
 
-    res.render('updateRoomStandard', {
+    res.render('roomStandards/updateRoomStandard', {
       title: 'Update Room Standard',
       standard,
     });
