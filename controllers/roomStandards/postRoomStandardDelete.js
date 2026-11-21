@@ -17,7 +17,7 @@ const postRoomStandardDelete = [
           standard,
           errors: [
             {
-              msg: `Cannot delete this standard because ${roomsUsingStandard} room(s) are currently assigned to it.`,
+              msg: `Cannot delete this standard because it has ${roomsUsingStandard} room(s) currently assigned to it.`,
             },
           ],
         });
