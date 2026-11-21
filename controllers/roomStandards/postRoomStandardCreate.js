@@ -1,14 +1,16 @@
 const db = require('../../db/queriesRoomStandards');
 const { validationResult, matchedData } = require('express-validator');
+const checkAdminPassword = require('../../utils/checkAdminPassword');
 const validateRoomStandard = require('../../utils/validateRoomStandard');
 
-const postRoomStandardsCreate = [
+const postRoomStandardCreate = [
+  checkAdminPassword,
   ...validateRoomStandard,
   async (req, res, next) => {
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        return res.status(400).render('createRoomStandard', {
+        return res.status(400).render('roomStandards/createRoomStandard', {
           title: 'Create Room Standard',
           errors: errors.array(),
         });
@@ -24,4 +26,4 @@ const postRoomStandardsCreate = [
   },
 ];
 
-module.exports = postRoomStandardsCreate;
+module.exports = postRoomStandardCreate;
