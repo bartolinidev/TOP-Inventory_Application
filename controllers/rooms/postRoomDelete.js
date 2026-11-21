@@ -8,7 +8,7 @@ const postRoomDelete = [
 
     try {
       await db.deleteRoom({ id });
-      res.redirect('/rooms');
+      res.redirect('/dashboard/rooms');
     } catch (err) {
       next(err);
     }
