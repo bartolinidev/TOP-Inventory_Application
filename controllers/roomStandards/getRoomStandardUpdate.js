@@ -5,8 +5,14 @@ const getRoomStandardUpdate = async (req, res, next) => {
   try {
     const standard = await db.getRoomStandard({ id });
 
+    if (!standard) {
+      const err = new Error('Standard not found.');
+      err.status = 404;
+      return next(err);
+    }
+
     res.render('roomStandards/updateRoomStandard', {
-      title: 'Update Room Standard',
+      title: `Update ${standard.name} Standard`,
       standard,
     });
   } catch (err) {

@@ -12,7 +12,7 @@ const postRoomStandardUpdate = [
       if (!errors.isEmpty()) {
         return res.status(400).render('roomStandards/updateRoomStandard', {
           standard,
-          title: 'Update Room Standard',
+          title: `Update ${standard.name} Standard`,
           errors: errors.array(),
         });
       }
