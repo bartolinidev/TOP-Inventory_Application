@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <section>
+          <%- include('../partials/errors') %>
+          <form
+            action="/room-standards/<%= standard.id %>/update"
+            method="post"
+          >
+            <fieldset>
+              <legend>Name</legend>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                minlength="1"
+                maxlength="20"
+                value="<%= standard.name %>"
+                required
+              />
+            </fieldset>
+
+            <fieldset>
+              <legend>Amenities</legend>
+              <% if(standard.coffee_machine) { %>
+              <input
+                type="checkbox"
+                id="coffee_machine"
+                name="coffee_machine"
+                value="true"
+                checked
+              />
+              <% } else { %>
+              <input
+                type="checkbox"
+                id="coffee_machine"
+                name="coffee_machine"
+                value="true"
+              />
+              <% } %>
+              <label for="coffee_machine"
+                ><%- include('../partials/icons/coffeeMachine') %></label
+              >
+              <% if(standard.bathtub) { %>
+              <input
+                type="checkbox"
+                id="bathtub"
+                name="bathtub"
+                value="true"
+                checked
+              />
+              <% } else { %>
+              <input type="checkbox" id="bathtub" name="bathtub" value="true" />
+              <% } %>
+              <label for="bathtub"
+                ><%- include('../partials/icons/bathtub') %></label
+              >
+            </fieldset>
+
+            <fieldset>
+              <legend>Price</legend>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                min="0"
+                step="0.01"
+                value="<%= standard.price %>"
+                required
+              />
+            </fieldset>
+
+            <fieldset>
+              <legend>Admin password</legend>
+              <input
+                type="password"
+                id="admin_password"
+                name="admin_password"
+                required
+              />
+            </fieldset>
+
+            <button type="submit">Confirm update</button>
+          </form>
+
+          <form
+            action="/room-standards/<%= standard.id %>/delete"
+            method="post"
+          >
+            <fieldset>
+              <legend>Delete standard</legend>
+              <label for="delete_admin_password">Admin password</label>
+              <input
+                type="password"
+                id="delete_admin_password"
+                name="admin_password"
+                required
+              />
+              <button type="submit">Confirm delete</button>
+            </fieldset>
+          </form>
+        </section>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
