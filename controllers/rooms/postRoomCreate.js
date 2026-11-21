@@ -16,7 +16,6 @@ const postRoomCreate = [
           standards,
           bedTypes: BED_TYPES,
           errors: errors.array(),
-          formData: req.body,
         });
       }
 
