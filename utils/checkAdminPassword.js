@@ -1,13 +1,13 @@
-const checkAdminPassword = (req, res, next) => {
-  const { admin_password } = req.body;
+const { body } = require('express-validator');
 
-  if (!admin_password || admin_password !== process.env.ADMIN_PASSWORD) {
-    const err = new Error('Invalid administrator password.');
-    err.status = 403;
-    return next(err);
-  }
-
-  next();
-};
+const checkAdminPassword = body('admin_password')
+  .notEmpty()
+  .withMessage('Administrator password is required.')
+  .custom((value) => {
+    if (value !== process.env.ADMIN_PASSWORD) {
+      throw new Error('Invalid administrator password.');
+    }
+    return true;
+  });
 
 module.exports = checkAdminPassword;
