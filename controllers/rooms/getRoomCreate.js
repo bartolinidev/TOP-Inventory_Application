@@ -1,6 +1,5 @@
 const dbStandards = require('../../db/queriesRoomStandards');
-
-const BED_TYPES = ['Single', 'Twin', 'Double'];
+const BED_TYPES = require('../../db/bedTypes');
 
 const getRoomCreate = async (req, res, next) => {
   try {
