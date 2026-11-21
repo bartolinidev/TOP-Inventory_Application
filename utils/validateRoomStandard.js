@@ -13,7 +13,7 @@ const validateRoomStandard = [
     .custom(async (name, { req }) => {
       const allStandards = await db.getAllRoomStandards();
       const duplicate = allStandards.find(
-        (s) => s.name === name && s.id !== Number(req.params.id),
+        (s) => s.name.toLowerCase() === name && s.id !== Number(req.params.id),
       );
       if (duplicate) throw new Error();
     })
