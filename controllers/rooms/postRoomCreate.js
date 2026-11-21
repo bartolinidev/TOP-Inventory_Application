@@ -2,9 +2,11 @@ const db = require('../../db/queriesRooms');
 const dbStandards = require('../../db/queriesRoomStandards');
 const BED_TYPES = require('../../db/bedTypes');
 const { validationResult, matchedData } = require('express-validator');
+const checkAdminPassword = require('../../utils/checkAdminPassword');
 const validateRoom = require('../../utils/validateRoom');
 
 const postRoomCreate = [
+  checkAdminPassword,
   ...validateRoom,
   async (req, res, next) => {
     try {
