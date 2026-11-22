@@ -23,9 +23,24 @@ app.use('/', dashboardRouter);
 app.use('/room-standards', roomStandardsRouter);
 app.use('/rooms', roomsRouter);
 
-// Catch-all (Custom 404)
+// Catch-all (Custom 404 for unmatched routes)
 app.use((req, res) => {
   res.status(404).render('404', { title: '404 - Not Found' });
+});
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  const status = err.status || 500;
+
+  if (status === 404) {
+    return res.status(404).render('404', { title: '404 - Not Found' });
+  }
+
+  res.status(status).render('error', {
+    title: `Error ${status}`,
+    message: err.message || 'Something went wrong!',
+  });
 });
 
 // Port
