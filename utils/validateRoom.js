@@ -1,4 +1,5 @@
 const { body } = require('express-validator');
+const db = require('../db/queriesRooms');
 const BED_TYPES = require('../db/bedTypes');
 
 const validateRoom = [
@@ -6,7 +7,13 @@ const validateRoom = [
     .trim()
     .isInt({ min: 1 })
     .withMessage(`Room number must be an integer`)
-    .toInt(),
+    .toInt()
+    .custom(async (id, { req }) => {
+      const existingRoom = await db.getRoomById({ id });
+      if (existingRoom && existingRoom.id !== Number(req.params.id)) {
+        throw new Error('Room with this number already exists');
+      }
+    }),
   body('room_standard_id')
     .isInt({ min: 1 })
     .withMessage('Please select a valid room standard')
