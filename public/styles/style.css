@@ -20,6 +20,10 @@ html {
   padding: 0;
 }
 
+*::selection{
+  background-color: var(--color-border);
+}
+
 a {
   color: var(--color-text-primary);
   text-decoration: none;
@@ -52,6 +56,8 @@ svg {
 
   --color-accent: #d97706;
   --color-accent-text: #f8fffe;
+
+  --color-attention: #c81e1e;
 
   --shadow:
     0 4px 6px -1px rgba(5, 36, 35, 0.08), 0 10px 15px -3px rgba(5, 36, 35, 0.06);
@@ -174,13 +180,16 @@ main .add-btn {
 }
 
 main section {
-  width: 100%;
   border-top: 1px dotted var(--color-border);
   padding-top: 32px;
+  gap: 32px;
+}
+
+main section.tiles-container {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
   justify-content: center;
-  gap: 32px;
 }
 
 .tile {
@@ -239,13 +248,105 @@ main section {
   color: var(--color-text-secondary);
 }
 
+main section.forms-container {
+  width: min(100%, 350px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 32px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+fieldset {
+  padding: 12px 24px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+legend {
+  padding-inline: 8px;
+  color: var(--color-text-secondary);
+  border-radius: 4px;
+}
+
+input[type='number'],
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+  align-self: center;
+  padding: 4px 8px;
+}
+
+input[type='number']:focus,
+input[type='text']:focus,
+input[type='password']:focus {
+  outline: 2px solid var(--color-accent);
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  cursor: pointer;
+  accent-color: var(--color-accent);
+  margin-right: 8px;
+}
+
+button[type='submit'] {
+  background-color: var(--color-surface);
+  border-radius: 8px;
+  padding: 8px 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+button[type='submit'].confirm-btn {
+  border: 2px solid var(--color-accent);
+}
+
+button[type='submit'].delete-btn {
+  border: 2px solid var(--color-attention);
+}
+
+.confirm-btn__check-icon {
+  font-size: 1.5em;
+  color: var(--color-accent);
+  font-weight: bold;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.delete-btn__delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.delete-btn__trash-icon {
+  color: var(--color-attention);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
 /* ======================================= */
 /* HOVER ================================ */
 /* ===================================== */
 
 @media (hover: hover) {
   .tile:hover,
-  .add-btn:hover {
+  .add-btn:hover,
+  button[type='submit']:hover {
     box-shadow: var(--shadow-hover);
   }
 
@@ -253,8 +354,10 @@ main section {
     transform: translateX(20%);
   }
 
-  .add-btn:hover .add-btn__plus {
-    transform: scale(1.3);
+  .add-btn:hover .add-btn__plus,
+  button[type='submit']:hover .confirm-btn__check-icon,
+  button[type='submit']:hover .delete-btn__trash-icon {
+    transform: scale(1.2);
   }
 }
 
@@ -308,6 +411,8 @@ main section {
 
     --color-accent: #f59e0b;
     --color-accent-text: #052423;
+
+    --color-attention: #f87171;
 
     --shadow:
       0 10px 25px -5px rgba(5, 36, 35, 0.75),
