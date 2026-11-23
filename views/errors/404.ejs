@@ -1,1 +1,18 @@
-404
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+  <body>
+    <%- include('../partials/header') %>
+    <main>
+      <div class="container">
+        <h1>
+          <%= title %>
+        </h1>
+        <section class="errors-container">
+          <%- include('../partials/icons/404icon') %>
+        </section>
+      </div>
+    </main>
+    <%- include('../partials/footer') %>
+  </body>
+</html>

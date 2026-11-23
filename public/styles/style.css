@@ -94,6 +94,7 @@ header {
   background-color: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow);
+  color: var(--color-text-secondary);
 }
 
 .header-container {
@@ -183,10 +184,10 @@ main section {
   border-top: 1px dotted var(--color-border);
   padding-top: 32px;
   gap: 32px;
+  width: 100%;
 }
 
 main section.tiles-container {
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
   justify-content: center;
@@ -249,15 +250,14 @@ main section.tiles-container {
 }
 
 main section.forms-container {
-  width: min(100%, 350px);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
   gap: 32px;
 }
 
 form {
-  width: 100%;
+  width: min(100%, 350px);
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -353,8 +353,17 @@ button[type='submit'].delete-btn {
   gap: 8px;
 }
 
-.error-list__item svg{
+.error-list__item svg {
   color: var(--color-attention);
+}
+
+main section.errors-container {
+  text-align: center;
+}
+
+main section.errors-container svg {
+  width: 100px;
+  height: auto;
 }
 
 /* ======================================= */
