@@ -10,12 +10,9 @@
           >Add room
           <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
         >
-        <section>
+        <section class="tiles-container">
           <% floors.forEach((f) => { %>
-          <a
-            href="/rooms/floor/<%= f.floor %>"
-            class="tile tile--groupedRooms"
-          >
+          <a href="/rooms/floor/<%= f.floor %>" class="tile tile--groupedRooms">
             <span><b>Floor #<%= f.floor %></b> (<%= f.count %>)</span>
             <span class="tile__arrow" aria-hidden="true">&rarr;</span>
           </a>

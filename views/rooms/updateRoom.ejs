@@ -9,7 +9,7 @@
           <%= title %>
           #<%= room.id %>
         </h1>
-        <section>
+        <section class="forms-container">
           <%- include('../partials/errors') %>
           <form action="/rooms/id/<%= room.id %>/update" method="post">
             <fieldset>

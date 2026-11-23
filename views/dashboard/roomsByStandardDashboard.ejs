@@ -10,7 +10,7 @@
           >Add room
           <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
         >
-        <section>
+        <section class="tiles-container">
           <% roomStandards.forEach((s) => { %>
           <a href="/rooms/standard/<%= s.id %>" class="tile tile--groupedRooms">
             <span><b><%= s.name %></b> (<%= s.count %>)</span>

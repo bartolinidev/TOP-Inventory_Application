@@ -10,7 +10,7 @@
           >Add standard
           <span class="add-btn__plus" aria-hidden="true">&plus;</span></a
         >
-        <section>
+        <section class="tiles-container">
           <% standards.forEach((s) => { %>
           <a
             href="/room-standards/<%= s.id %>/update"
@@ -22,9 +22,10 @@
               <%- include('../partials/icons/tv') %> <%-
               include('../partials/icons/wifi') %> <%-
               include('../partials/icons/kettleSet') %> <%-
-              include('../partials/icons/shower') %> <% if (s.coffee_machine) { %>
-              <%- include('../partials/icons/coffeeMachine') %> <% } %> <% if
-              (s.bathtub) { %> <%- include('../partials/icons/bathtub') %> <% } %>
+              include('../partials/icons/shower') %> <% if (s.coffee_machine) {
+              %> <%- include('../partials/icons/coffeeMachine') %> <% } %> <% if
+              (s.bathtub) { %> <%- include('../partials/icons/bathtub') %> <% }
+              %>
             </div>
 
             <span>
