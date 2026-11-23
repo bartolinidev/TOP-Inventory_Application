@@ -29,39 +29,48 @@
 
             <fieldset>
               <legend>Amenities</legend>
-              <% if(standard.coffee_machine) { %>
-              <input
-                type="checkbox"
-                id="coffee_machine"
-                name="coffee_machine"
-                value="true"
-                checked
-              />
-              <% } else { %>
-              <input
-                type="checkbox"
-                id="coffee_machine"
-                name="coffee_machine"
-                value="true"
-              />
-              <% } %>
-              <label for="coffee_machine"
-                ><%- include('../partials/icons/coffeeMachine') %></label
-              >
-              <% if(standard.bathtub) { %>
-              <input
-                type="checkbox"
-                id="bathtub"
-                name="bathtub"
-                value="true"
-                checked
-              />
-              <% } else { %>
-              <input type="checkbox" id="bathtub" name="bathtub" value="true" />
-              <% } %>
-              <label for="bathtub"
-                ><%- include('../partials/icons/bathtub') %></label
-              >
+              <div>
+                <% if(standard.coffee_machine) { %>
+                <input
+                  type="checkbox"
+                  id="coffee_machine"
+                  name="coffee_machine"
+                  value="true"
+                  checked
+                />
+                <% } else { %>
+                <input
+                  type="checkbox"
+                  id="coffee_machine"
+                  name="coffee_machine"
+                  value="true"
+                />
+                <% } %>
+                <label for="coffee_machine"
+                  ><%- include('../partials/icons/coffeeMachine') %></label
+                >
+              </div>
+              <div>
+                <% if(standard.bathtub) { %>
+                <input
+                  type="checkbox"
+                  id="bathtub"
+                  name="bathtub"
+                  value="true"
+                  checked
+                />
+                <% } else { %>
+                <input
+                  type="checkbox"
+                  id="bathtub"
+                  name="bathtub"
+                  value="true"
+                />
+                <% } %>
+                <label for="bathtub"
+                  ><%- include('../partials/icons/bathtub') %></label
+                >
+              </div>
             </fieldset>
 
             <fieldset>
