@@ -25,7 +25,7 @@ app.use('/rooms', roomsRouter);
 
 // Catch-all (Custom 404 for unmatched routes)
 app.use((req, res) => {
-  res.status(404).render('404', { title: '404 - Not Found' });
+  res.status(404).render('errors/404', { title: '404 - Not Found' });
 });
 
 // Global Error Handler
@@ -34,12 +34,18 @@ app.use((err, req, res, next) => {
   const status = err.status || 500;
 
   if (status === 404) {
-    return res.status(404).render('404', { title: '404 - Not Found' });
+    return res.status(404).render('errors/404', { title: '404 - Not Found' });
   }
 
-  res.status(status).render('error', {
+  // Hide potential infrastructure details leak
+  const safeMessage =
+    status === 500
+      ? 'Internal server error. Please try again later.'
+      : err.message || 'Something went wrong!';
+
+  res.status(status).render('errors/errorGlobal', {
     title: `Error ${status}`,
-    message: err.message || 'Something went wrong!',
+    message: safeMessage,
   });
 });
 

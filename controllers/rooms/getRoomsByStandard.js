@@ -11,7 +11,7 @@ const getRoomsByStandard = async (req, res, next) => {
     ]);
 
     if (!standard) {
-      return res.status(404).render('404', { title: 'Standard not found' });
+      return res.status(404).render('errors/404', { title: 'Standard not found' });
     }
 
     res.render('rooms/filteredRooms', {
