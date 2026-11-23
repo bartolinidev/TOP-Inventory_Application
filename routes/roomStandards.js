@@ -17,13 +17,13 @@ roomStandardsRouter.get('/create', getRoomStandardCreate);
 // POST /room-standards/create
 roomStandardsRouter.post('/create', postRoomStandardCreate);
 
-// GET /room-standards/:id/update
-roomStandardsRouter.get('/:id/update', getRoomStandardUpdate);
+// GET /room-standards/id/:id/update
+roomStandardsRouter.get('/id/:id/update', getRoomStandardUpdate);
 
-// POST /room-standards/:id/update
-roomStandardsRouter.post('/:id/update', postRoomStandardUpdate);
+// POST /room-standards/id/:id/update
+roomStandardsRouter.post('/id/:id/update', postRoomStandardUpdate);
 
-// POST /room-standards/:id/delete
-roomStandardsRouter.post('/:id/delete', postRoomStandardDelete);
+// POST /room-standards/id/:id/delete
+roomStandardsRouter.post('/id/:id/delete', postRoomStandardDelete);
 
 module.exports = roomStandardsRouter;

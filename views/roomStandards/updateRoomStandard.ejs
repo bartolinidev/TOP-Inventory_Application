@@ -11,7 +11,7 @@
         <section class="forms-container">
           <%- include('../partials/errors') %>
           <form
-            action="/room-standards/<%= standard.id %>/update"
+            action="/room-standards/id/<%= standard.id %>/update"
             method="post"
           >
             <fieldset>
@@ -105,7 +105,7 @@
           </form>
 
           <form
-            action="/room-standards/<%= standard.id %>/delete"
+            action="/room-standards/id/<%= standard.id %>/delete"
             method="post"
           >
             <fieldset>

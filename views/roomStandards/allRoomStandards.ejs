@@ -13,7 +13,7 @@
         <section class="tiles-container">
           <% standards.forEach((s) => { %>
           <a
-            href="/room-standards/<%= s.id %>/update"
+            href="/room-standards/id/<%= s.id %>/update"
             class="tile tile--standard"
           >
             <span><b><%= s.name %></b> (<%= count[s.id] %>)</span>
