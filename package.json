@@ -4,7 +4,10 @@
     "ejs": "^7.0.2",
     "express": "^5.3.0",
     "express-validator": "^7.3.2",
-    "pg": "^8.23.1",
-    "prettier-plugin-ejs": "^1.0.3"
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.10.1",
+    "prettier-plugin-ejs": "^1.0.4"
   }
 }
