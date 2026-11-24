@@ -164,3 +164,4 @@ erDiagram
 - Add API to serve raw data in JSON files
 - Add search engine to find rooms by id/number
 - Extract partials like `room.ejs`, and `roomStandard.ejs`
+- Implement auto re-entering data to forms in `updateRoom.ejs` and `updateRoomsStandard.ejs` after re-render on failed validation - for better UX
