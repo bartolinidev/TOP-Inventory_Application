@@ -347,6 +347,9 @@ button[type='submit'].delete-btn {
 
 .error-list {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .error-list__item {
