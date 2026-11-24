@@ -7,9 +7,17 @@
         >
       </nav>
       Rooms Inventory
-      <button title="Key to Symbols" aria-label="Key to Symbols">
+      <button
+        class="modal-btn"
+        title="Key to Symbols"
+        aria-label="Key to symbols"
+        command="show-modal"
+        commandfor="key-to-symbols"
+      >
         <span style="font-size: 1.3rem" aria-hidden="true">&#128712;</span>
       </button>
     </div>
   </div>
 </header>
+
+<%- include('dialogKeyToSymbols') %>

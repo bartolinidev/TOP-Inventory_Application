@@ -50,6 +50,7 @@ svg {
   --color-bg: #f8fffe;
   --color-surface: #e6fffb;
   --color-border: #99f6e4;
+  --color-bg-dialog: #fafffecc;
 
   --color-text-primary: #052423;
   --color-text-secondary: #18817e;
@@ -145,7 +146,7 @@ main > .container {
 }
 
 main h1 {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,7 +178,6 @@ main .add-btn {
   color: var(--color-accent);
   align-self: center;
   width: fit-content;
-  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 main section {
@@ -366,6 +366,97 @@ main section.errors-container svg {
   height: auto;
 }
 
+dialog#key-to-symbols {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin: auto;
+  width: min(100%, 350px);
+}
+
+dialog#key-to-symbols::backdrop {
+  background-color: var(--color-bg-dialog);
+  backdrop-filter: blur(2px);
+}
+
+.modal-close-btn {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 8px 32px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.modal-close-btn:active {
+  transform: scale(0.95);
+}
+
+.modal-close-btn .close-icon {
+  color: var(--color-accent);
+}
+
+.dialog-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 16px;
+}
+
+.symbols-group {
+  width: 100%;
+}
+
+.symbols-group:last-of-type {
+  margin-bottom: 16px;
+}
+
+#key-to-symbols h2 {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  font-size: 1.1em;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+#key-to-symbols h3 {
+  text-align: center;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 1em;
+  border-bottom: 1px dotted var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.dialog-list {
+  list-style: none;
+  padding-inline: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dialog-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 /* ======================================= */
 /* HOVER ================================ */
 /* ===================================== */
@@ -373,7 +464,8 @@ main section.errors-container svg {
 @media (hover: hover) {
   .tile:hover,
   .add-btn:hover,
-  button[type='submit']:hover {
+  button[type='submit']:hover,
+  .modal-close-btn:hover {
     box-shadow: var(--shadow-hover);
   }
 
@@ -383,7 +475,8 @@ main section.errors-container svg {
 
   .add-btn:hover .add-btn__plus,
   button[type='submit']:hover .confirm-btn__check-icon,
-  button[type='submit']:hover .delete-btn__trash-icon {
+  button[type='submit']:hover .delete-btn__trash-icon,
+  .modal-close-btn:hover .close-icon {
     transform: scale(1.2);
   }
 }
@@ -432,6 +525,7 @@ main section.errors-container svg {
     --color-bg: #052423;
     --color-surface: #0b3d3b;
     --color-border: #14b8a6;
+    --color-bg-dialog: #052423cc;
 
     --color-text-primary: #f8fffe;
     --color-text-secondary: #99ffee;
