@@ -1,0 +1,72 @@
+<dialog id="key-to-symbols">
+  <div class="dialog-content-container">
+    <h2>Key To Symbols</h2>
+    <div class="symbols-group">
+      <h3>Bed Types</h3>
+      <ul class="dialog-list">
+        <li>
+          <%- include('icons/singleBed') %>
+          Single
+        </li>
+        <li>
+          <%- include('icons/twinBeds') %>
+          Twin
+        </li>
+        <li>
+          <%- include('icons/doubleBed') %>
+          Double
+        </li>
+      </ul>
+    </div>
+
+    <div class="symbols-group">
+      <h3>Amenities</h3>
+      <ul class="dialog-list">
+        <li>
+          <%- include('icons/tv') %>
+          TV
+        </li>
+        <li>
+          <%- include('icons/wifi') %>
+          Wi-Fi
+        </li>
+        <li>
+          <%- include('icons/kettleSet') %>
+          Kettle set
+        </li>
+        <li>
+          <%- include('icons/shower') %>
+          Shower
+        </li>
+      </ul>
+    </div>
+
+    <div class="symbols-group">
+      <h3>Optional Amenities</h3>
+      <ul class="dialog-list">
+        <li>
+          <%- include('icons/coffeeMachine') %>
+          Coffee machine
+        </li>
+        <li>
+          <%- include('icons/bathtub') %>
+          Bathtub
+        </li>
+      </ul>
+    </div>
+
+    <div class="symbols-group">
+      <h3>Accessibility</h3>
+      <ul class="dialog-list">
+        <li>
+          <%- include('icons/accessible') %>
+          Accessible room
+        </li>
+      </ul>
+    </div>
+
+    <button class="modal-close-btn" commandfor="key-to-symbols" command="close">
+      Close <span class="close-icon" aria-hidden="true">&#128473;</span>
+    </button>
+  </div>
+</dialog>
