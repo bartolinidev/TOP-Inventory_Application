@@ -165,4 +165,5 @@ erDiagram
 
 - Add advanced authentication (covered in the later part of the curriculum)
 - Add API to serve raw data in JSON files
+- Add search engine to look find rooms by id/number
 - Extract partials like `room.ejs`, and `roomStandard.ejs`
