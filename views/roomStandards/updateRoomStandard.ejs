@@ -98,9 +98,7 @@
 
             <button type="submit" class="confirm-btn">
               Confirm update
-              <span class="confirm-btn__check-icon" aria-hidden="true"
-                >&check;</span
-              >
+              <%- include('../partials/icons/confirm') %>
             </button>
           </form>
 
@@ -119,7 +117,8 @@
               />
             </fieldset>
             <button type="submit" class="delete-btn">
-              Confirm delete <%- include('../partials/icons/trash') %>
+              Confirm delete
+              <%- include('../partials/icons/trash') %>
             </button>
           </form>
         </section>

@@ -329,6 +329,8 @@ button[type='submit'].delete-btn {
   color: var(--color-accent);
   font-weight: bold;
   transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 0.95em;
+  height: auto;
 }
 
 .delete-btn__delete-btn {
@@ -399,9 +401,9 @@ dialog#key-to-symbols::backdrop {
   transform: scale(0.95);
 }
 
-.modal-close-btn .close-icon {
+.modal-close-btn__close-icon {
   color: var(--color-accent);
-  width: .95em;
+  width: 1.1em;
   height: auto;
 }
 
@@ -478,7 +480,7 @@ body:has(dialog[open]) {
   .add-btn:hover .add-btn__plus,
   button[type='submit']:hover .confirm-btn__check-icon,
   button[type='submit']:hover .delete-btn__trash-icon,
-  .modal-close-btn:hover .close-icon {
+  .modal-close-btn:hover .modal-close-btn__close-icon {
     transform: scale(1.2);
   }
 }
