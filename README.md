@@ -12,14 +12,11 @@ The project is part of the Node.js course of Full Stack JavaScript path of [The 
 
 ## Table Of Contents
 
-- [Introduction](#introduction)
 - [Sample Screenshots](#sample-screenshots)
 - [Tech Stack](#tech-stack)
 - [Deployment](#deployment)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Local Installation](#local-installation)
 - [Data Flow Overview](#data-flow-overview)
 - [Data Structure (Tables)](#data-structure-tables)
 - [Areas To Improve](#areas-to-improve)
