@@ -401,6 +401,8 @@ dialog#key-to-symbols::backdrop {
 
 .modal-close-btn .close-icon {
   color: var(--color-accent);
+  width: .95em;
+  height: auto;
 }
 
 .dialog-content-container {
