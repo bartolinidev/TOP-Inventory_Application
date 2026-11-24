@@ -11,7 +11,7 @@
         </h1>
         <section class="forms-container">
           <%- include('../partials/errors') %>
-          <form action="/rooms/id/<%= room.id %>/update" method="post">
+          <form action="/rooms/id/<%= room.id %>/update" method="post" novalidate>
             <fieldset>
               <legend>Room number</legend>
               <input
@@ -129,7 +129,7 @@
             </button>
           </form>
 
-          <form action="/rooms/id/<%= room.id %>/delete" method="post">
+          <form action="/rooms/id/<%= room.id %>/delete" method="post" novalidate>
             <fieldset>
               <legend>Delete room</legend>
               <label for="delete_admin_password">Admin password</label>

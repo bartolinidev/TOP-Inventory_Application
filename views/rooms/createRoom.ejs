@@ -10,7 +10,7 @@
         </h1>
         <section class="forms-container">
           <%- include('../partials/errors') %>
-          <form action="/rooms/create" method="post">
+          <form action="/rooms/create" method="post" novalidate>
             <fieldset>
               <legend>Room number</legend>
               <input type="number" id="id" name="id" min="1" required />
