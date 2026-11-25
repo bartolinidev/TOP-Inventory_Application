@@ -314,13 +314,17 @@ button[type='submit'] {
   gap: 16px;
 }
 
+button[type='submit']:active {
+  transform: scale(0.95);
+}
+
 button[type='submit'].confirm-btn {
-  border: 2px solid var(--color-accent);
+  border: 1px solid var(--color-accent);
   margin-top: 8px;
 }
 
 button[type='submit'].delete-btn {
-  border: 2px solid var(--color-attention);
+  border: 1px solid var(--color-attention);
   margin-top: 8px;
 }
 
