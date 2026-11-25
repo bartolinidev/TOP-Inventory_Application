@@ -7,6 +7,7 @@ const validateRoom = [
     .trim()
     .isInt({ min: 1 })
     .withMessage(`Room number must be an integer`)
+    .bail()
     .toInt()
     .custom(async (id, { req }) => {
       const existingRoom = await db.getRoomById({ id });

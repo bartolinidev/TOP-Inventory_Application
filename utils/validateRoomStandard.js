@@ -22,6 +22,8 @@ const validateRoomStandard = [
     .trim()
     .isDecimal({ decimal_digits: '0,2' })
     .withMessage('Price must be a valid amount with up to 2 decimal places')
+    .bail()
+    .isLength({ max: 10 })
     .withMessage(`Price must contain max 10 digits`),
   body('coffee_machine').customSanitizer(
     (value) => value === 'true' || value === true,
